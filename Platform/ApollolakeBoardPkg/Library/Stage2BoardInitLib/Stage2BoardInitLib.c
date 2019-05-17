@@ -590,6 +590,25 @@ ClearFspHob (
 }
 
 /**
+  Platform specific initialization for BSP and APs.
+**/
+VOID
+EFIAPI
+PlatformCpuInit (
+  VOID
+  )
+{
+  UINT64       Data;
+
+  //
+  // Enable InSMM
+  //
+  Data = AsmReadMsr64 (MSR_IA_UNTRUST);
+  AsmWriteMsr64 (MSR_IA_UNTRUST, Data | B_IN_SMM_EN);
+}
+
+
+/**
   Board specific hook points.
 
   Implement board specific initialization during the boot flow.
@@ -645,6 +664,8 @@ BoardInit (
     if (GenericCfgData != NULL) {
       SetPayloadId (GenericCfgData->PayloadId);
     }
+
+    PcdSet32S (PcdPlatformCpuInitHook, (UINT32)(UINTN) PlatformCpuInit);
     break;
   case PostSiliconInit:
     // To prevent from generating MCA for CLFLUSH flash region

@@ -1,6 +1,6 @@
 /** @file
 
-  Copyright (c) 2017 - 2018, Intel Corporation. All rights reserved.<BR>
+  Copyright (c) 2017 - 2019, Intel Corporation. All rights reserved.<BR>
   This program and the accompanying materials
   are licensed and made available under the terms and conditions of the BSD License
   which accompanies this distribution.  The full text of the license may be found at
@@ -26,6 +26,8 @@
 
 #define  ALIGN_UP(address, align)     (((address) + ((align) - 1)) & ~((align)-1))
 #define  ALIGN_DOWN(address, align)   ((address) & ~((align)-1))
+
+typedef  VOID  (*PLATFORM_CPU_INIT_HOOK) (VOID);
 
 #pragma pack(1)
 

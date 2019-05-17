@@ -244,6 +244,9 @@
 #define B_IA32_MTRR_CAP_SMRR_SUPPORT                                  BIT11
 #define B_IA32_MTRR_CAP_EMRR_SUPPORT                                  BIT12
 
+#define MSR_IA_UNTRUST                                                0x00000120
+#define B_IN_SMM_EN                                                   BIT6
+
 #define IA32_MCG_CAP                                                  0x00000179
 #define IA32_MCG_STATUS                                               0x0000017A
 #define MSR_FLEX_RATIO                                                0x00000194
