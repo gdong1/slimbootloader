@@ -45,7 +45,7 @@ class Board(BaseBoard):
 
 		self.HAVE_VBT_BIN         = 1
 		self.HAVE_VERIFIED_BOOT   = 1
-		self.HAVE_MEASURED_BOOT   = 0
+		self.HAVE_MEASURED_BOOT   = 1
 		self.HAVE_FLASH_MAP       = 1
 		self.HAVE_SEED_LIST       = 0
 		self.HAVE_PSD_TABLE       = 1
@@ -99,7 +99,7 @@ class Board(BaseBoard):
 
 		if len(self._PAYLOAD_NAME.split(';')) > 1:
 			# EPAYLOAD is specified
-			self.EPAYLOAD_SIZE      = 0x00130000
+			self.EPAYLOAD_SIZE      = 0x00140000
 			self.UEFI_VARIABLE_SIZE = 0x00040000
 		else:
 			# EPAYLOAD does not exist, create a dummy one

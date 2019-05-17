@@ -18,7 +18,7 @@
 #include <Library/PciExpressLib.h>
 #include <InternalPciEnumerationLib.h>
 
-#define  DEBUG_PCI_ENUM    0
+#define  DEBUG_PCI_ENUM    1
 #define  DOWNGRADE_IO32    1
 #define  DOWNGRADE_PMEM64  1
 #define  DOWNGRADE_MEM64   1
