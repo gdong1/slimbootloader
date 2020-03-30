@@ -47,6 +47,8 @@
 #include <Guid/LoaderLibraryDataGuid.h>
 #include <Guid/GraphicsInfoHob.h>
 #include <Guid/SmmInformationGuid.h>
+#include <Guid/AcpiTableGuid.h>
+#include <Guid/SmbiosTableGuid.h>
 #include <Service/PlatformService.h>
 #include <Pi/PiBootMode.h>
 #include <FspEas.h>

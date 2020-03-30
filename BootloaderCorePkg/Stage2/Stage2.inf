@@ -88,6 +88,8 @@
   gLoaderPlatformDataGuid
   gDeviceTableHobGuid
   gSmmInformationGuid
+  gEfiAcpi20TableGuid
+  gEfiSmbios3TableGuid
 
 [Pcd]
   gPlatformCommonLibTokenSpaceGuid.PcdMaxLibraryDataEntry

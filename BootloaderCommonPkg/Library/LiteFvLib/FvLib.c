@@ -6,6 +6,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 
 **/
 #include "FvLib.h"
+#include <Library/DebugLib.h>
 
 /**
   Check if buffer contains a valid FV header.
@@ -310,13 +311,13 @@ LoadFvImage (
   INT32                                 Gap;
 
   FvHeader = (EFI_FIRMWARE_VOLUME_HEADER *)FvBase;
-
+DEBUG ((DEBUG_INFO, "LoadFvImage 1\n"));
   // Find SecCore file first
   Status = GetFfsFileByType (FvHeader, EFI_FV_FILETYPE_SECURITY_CORE, 0, &SecCoreFile);
   if (EFI_ERROR (Status)) {
     return EFI_NOT_FOUND;
   }
-
+DEBUG ((DEBUG_INFO, "LoadFvImage 2\n"));
   // Find PE32 or TE section in SecCore file
   Status = GetSectionByType (SecCoreFile, EFI_SECTION_PE32, 0, (VOID **)&Section);
   if (Status == EFI_NOT_FOUND) {
@@ -325,22 +326,28 @@ LoadFvImage (
   if (EFI_ERROR (Status)) {
     return EFI_NOT_FOUND;
   }
-
+DEBUG ((DEBUG_INFO, "LoadFvImage 3\n"));
   // Check preferred image base
-  SecCoreImageBase = (UINT32)(UINTN)Section;
-  Status = PeCoffGetPreferredBase ((VOID *)(UINTN)SecCoreImageBase, &PreferredBase);
+  SecCoreImageBase = (UINTN)Section;
+  Status = PeCoffGetPreferredBase ((VOID *)SecCoreImageBase, &PreferredBase);
   if (EFI_ERROR (Status)) {
     return Status;
   }
-
+DEBUG ((DEBUG_INFO, "LoadFvImage 4\n"));
+DEBUG ((DEBUG_INFO, "SecCoreImageBase = 0x%x\n", SecCoreImageBase));
+DEBUG ((DEBUG_INFO, "PreferredBase = 0x%x\n", PreferredBase));
+DEBUG ((DEBUG_INFO, "FvLength = 0x%x\n", FvLength));
+DEBUG ((DEBUG_INFO, "FvHeader = 0x%p\n", FvHeader));
   // Move FV to preferred base if required
-  Gap = (UINT32)PreferredBase - SecCoreImageBase;
+  Gap = (UINT32)(UINTN)PreferredBase - SecCoreImageBase;
+
+DEBUG ((DEBUG_INFO, "Gap = 0x%x\n", Gap));
   if (Gap != 0) {
     CopyMem ((UINT8 *)FvHeader + Gap, FvHeader, FvLength);
     SecCoreImageBase += Gap;
   }
-
-  Status = PeCoffLoaderGetEntryPoint ((VOID *)(UINTN)SecCoreImageBase, EntryPoint);
-
+DEBUG ((DEBUG_INFO, "LoadFvImage 5\n"));
+  Status = PeCoffLoaderGetEntryPoint ((VOID *)SecCoreImageBase, EntryPoint);
+DEBUG ((DEBUG_INFO, "LoadFvImage 6\n"));
   return Status;
 }
