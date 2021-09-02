@@ -68,6 +68,7 @@
   StageLib
   ThunkLib
   LocalApicLib
+  #UniversalPayloadLib
 
 [Guids]
   gFspReservedMemoryResourceHobGuid
@@ -91,6 +92,14 @@
   gDeviceTableHobGuid
   gSmmInformationGuid
   gLoaderMpCpuTaskInfoGuid
+  gUniversalPayloadAcpiTableGuid
+  gUniversalPayloadSmbiosTableGuid
+  gUniversalPayloadSerialPortInfoGuid
+  gPldSmmRegisterInfoGuid
+  gEfiSmmSmramMemoryGuid
+  gSpiFlashInfoGuid
+  gNvVariableInfoGuid
+  gLoadedPayloadImageInfoGuid
 
 [Pcd]
   gPlatformCommonLibTokenSpaceGuid.PcdMaxLibraryDataEntry

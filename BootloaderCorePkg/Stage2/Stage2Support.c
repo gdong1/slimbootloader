@@ -1,6 +1,6 @@
 /** @file
 
-  Copyright (c) 2016 - 2019, Intel Corporation. All rights reserved.<BR>
+  Copyright (c) 2016 - 2021, Intel Corporation. All rights reserved.<BR>
   SPDX-License-Identifier: BSD-2-Clause-Patent
 
 **/
@@ -278,6 +278,59 @@ SplitMemroyMap (
   return EFI_SUCCESS;
 }
 
+
+/**
+  Carve out a bootloader reserved, AcpiNvs, AcpiRecalim and payload reserved memory range
+  from the system memory map.
+
+  @param MemoryMapInfo     Array of MemoryMapInfo structure containing memory map entry.
+
+  @retval EFI_SUCCESS           Memory ranges have been splitted successfully.
+  @retval EFI_UNSUPPORTED       Required memory range size is not page aligned.
+  @retval EFI_OUT_OF_RESOURCES  The system memory map top entry is too small.
+  @retval EFI_ABORTED           No memory range has been splitted.
+
+**/
+EFI_STATUS
+BuildMemroyHobs (
+  IN   MEMORY_MAP_INFO         *MemoryMapInfo
+  )
+{
+  UINTN                        Idx;
+  MEMORY_MAP_ENTRY             *MapEntry;
+  EFI_RESOURCE_ATTRIBUTE_TYPE  Attribue;
+  EFI_RESOURCE_TYPE            ResourceType;
+
+  Attribue = EFI_RESOURCE_ATTRIBUTE_PRESENT |
+             EFI_RESOURCE_ATTRIBUTE_INITIALIZED |
+             EFI_RESOURCE_ATTRIBUTE_TESTED |
+             EFI_RESOURCE_ATTRIBUTE_UNCACHEABLE |
+             EFI_RESOURCE_ATTRIBUTE_WRITE_COMBINEABLE |
+             EFI_RESOURCE_ATTRIBUTE_WRITE_THROUGH_CACHEABLE |
+             EFI_RESOURCE_ATTRIBUTE_WRITE_BACK_CACHEABLE;
+
+  for (Idx = 0; Idx < MemoryMapInfo->Count; Idx++) {
+    MapEntry     = &MemoryMapInfo->Entry[Idx];
+    ResourceType = EFI_RESOURCE_SYSTEM_MEMORY;
+    switch (MapEntry->Type) {
+    case MEM_MAP_TYPE_ACPI_RECLAIM:
+      BuildMemoryAllocationHob (MapEntry->Base, MapEntry->Size, EfiACPIReclaimMemory);
+      break;
+    case MEM_MAP_TYPE_ACPI_NVS:
+      BuildMemoryAllocationHob (MapEntry->Base, MapEntry->Size, EfiACPIMemoryNVS);
+      break;
+    case MEM_MAP_TYPE_RESERVED:
+      ResourceType = EFI_RESOURCE_MEMORY_RESERVED;
+      break;
+    default:
+      break;
+    }
+    BuildResourceDescriptorHob (ResourceType, Attribue, MapEntry->Base, MapEntry->Size);
+  }
+
+  return EFI_SUCCESS;
+}
+
 /**
   Build some basic HOBs
 
@@ -369,6 +422,7 @@ BuildBaseInfoHob (
     MemoryMapInfo->Revision = 1;
     TraverseMemoryResourceHob (LdrGlobal->FspHobList, MemResHobCallback, MemoryMapInfo);
     Status = SplitMemroyMap (MemoryMapInfo);
+    BuildMemroyHobs (MemoryMapInfo);
     PrintMemoryMap (MemoryMapInfo);
     if (EFI_ERROR (Status)) {
       CpuHaltWithStatus ("Memory map failure !", Status);
@@ -452,6 +506,10 @@ BuildExtraInfoHob (
   VOID                             *DeviceTableHob;
   LDR_SMM_INFO                     *SmmInfoHob;
   SYS_CPU_TASK_HOB                 *SysCpuTaskHob;
+  UNIVERSAL_PAYLOAD_SERIAL_PORT_INFO *PldSerialPortInfo;
+  UINT32                           RegEax;
+  UINT8                            PhysicalAddressBits;
+  EFI_RESOURCE_ATTRIBUTE_TYPE      ResourceAttribute;
 
   LdrGlobal = (LOADER_GLOBAL_DATA *)GetLoaderGlobalDataPointer();
   S3Data    = (S3_DATA *)LdrGlobal->S3DataPtr;
@@ -589,11 +647,103 @@ BuildExtraInfoHob (
   if (GetPayloadId () == 0) {
     Length        = sizeof (SYS_CPU_TASK_HOB);
     SysCpuTaskHob = BuildGuidHob (&gLoaderMpCpuTaskInfoGuid, Length);
-
+    ZeroMem (SysCpuTaskHob, sizeof (SYS_CPU_TASK_HOB));
     if (SysCpuTaskHob != NULL) {
       SysCpuTaskHob->SysCpuTask = (UINTN) MpGetTask();
     }
   }
+
+  //
+  // Build HOBs for universal payload
+  //
+
+  // ACPI table HOB
+  UNIVERSAL_PAYLOAD_ACPI_TABLE   *AcpiHob;
+  AcpiHob = BuildGuidHob (&gUniversalPayloadAcpiTableGuid, sizeof (UNIVERSAL_PAYLOAD_ACPI_TABLE));
+  if (AcpiHob != NULL) {
+    ZeroMem (AcpiHob, sizeof (UNIVERSAL_PAYLOAD_ACPI_TABLE));
+    AcpiHob->Header.Revision = UNIVERSAL_PAYLOAD_ACPI_TABLE_REVISION;
+    AcpiHob->Header.Length   = sizeof (UNIVERSAL_PAYLOAD_ACPI_TABLE);
+    AcpiHob->Rsdp            = S3Data->AcpiBase;
+  }
+
+  // SMBIOS table HOB
+  UNIVERSAL_PAYLOAD_SMBIOS_TABLE   *SmbiosHob;
+  SmbiosHob = BuildGuidHob (&gUniversalPayloadSmbiosTableGuid, sizeof (UNIVERSAL_PAYLOAD_SMBIOS_TABLE));
+  if (SmbiosHob != NULL) {
+    ZeroMem (SmbiosHob, sizeof (UNIVERSAL_PAYLOAD_SMBIOS_TABLE));
+    SmbiosHob->Header.Revision  = UNIVERSAL_PAYLOAD_SMBIOS_TABLE_REVISION;
+    SmbiosHob->Header.Length    = sizeof (UNIVERSAL_PAYLOAD_SMBIOS_TABLE);
+    SmbiosHob->SmBiosEntryPoint = PcdGet32 (PcdSmbiosTablesBase);
+  }
+
+  // Build serial port hob
+  PldSerialPortInfo = BuildGuidHob (&gUniversalPayloadSerialPortInfoGuid, sizeof (UNIVERSAL_PAYLOAD_SERIAL_PORT_INFO));
+  if (PldSerialPortInfo != NULL) {
+    ZeroMem (PldSerialPortInfo, sizeof (UNIVERSAL_PAYLOAD_SERIAL_PORT_INFO));
+    PldSerialPortInfo->Header.Revision = UNIVERSAL_PAYLOAD_SERIAL_PORT_INFO_REVISION;
+    PldSerialPortInfo->Header.Length   = sizeof (UNIVERSAL_PAYLOAD_SERIAL_PORT_INFO);
+    PldSerialPortInfo->UseMmio         = FALSE;
+    PldSerialPortInfo->RegisterBase    = 0x3F8;
+    PldSerialPortInfo->BaudRate        = 115200;
+    PldSerialPortInfo->RegisterStride  = 1;
+    PlatformUpdateHobInfo (&gUniversalPayloadSerialPortInfoGuid, PldSerialPortInfo);
+  }
+
+  // SMM register HOB
+  UNIVERSAL_PAYLOAD_SMM_REGISTERS   *SmmRegisterHob;
+  Length = sizeof (UNIVERSAL_PAYLOAD_SMM_REGISTERS) + 5 * sizeof (UNIVERSAL_PAYLOAD_GENERIC_REGISTER);
+  SmmRegisterHob = BuildGuidHob (&gPldSmmRegisterInfoGuid, Length);
+  if (SmmRegisterHob != NULL) {
+    ZeroMem (SmmRegisterHob, Length);
+    PlatformUpdateHobInfo (&gPldSmmRegisterInfoGuid, SmmRegisterHob);
+  }
+
+  // SMM memory HOB
+  EFI_SMRAM_HOB_DESCRIPTOR_BLOCK   *SmmMemoryHob;
+  Length = sizeof (EFI_SMRAM_HOB_DESCRIPTOR_BLOCK) + sizeof (EFI_SMRAM_DESCRIPTOR);
+  SmmMemoryHob = BuildGuidHob (&gEfiSmmSmramMemoryGuid, Length);
+  if (SmmMemoryHob != NULL) {
+    ZeroMem (SmmMemoryHob, Length);
+    PlatformUpdateHobInfo (&gEfiSmmSmramMemoryGuid, SmmMemoryHob);
+  }
+
+  // SPI Flash HOB
+  SPI_FLASH_INFO   *SpiFlashInfoHob;
+  SpiFlashInfoHob = BuildGuidHob (&gSpiFlashInfoGuid, sizeof (SPI_FLASH_INFO));
+  if (SpiFlashInfoHob != NULL) {
+    ZeroMem (SpiFlashInfoHob,  sizeof (SPI_FLASH_INFO));
+    SpiFlashInfoHob->SpiAddress.Address = 0;
+    PlatformUpdateHobInfo (&gSpiFlashInfoGuid, SpiFlashInfoHob);
+  }
+
+  // SPI NV variable HOB
+  NV_VARIABLE_INFO   *NvVariableHob;
+  NvVariableHob = BuildGuidHob (&gNvVariableInfoGuid, sizeof (NV_VARIABLE_INFO));
+  if (NvVariableHob != NULL) {
+    ZeroMem (NvVariableHob,  sizeof (NV_VARIABLE_INFO));
+    PlatformUpdateHobInfo (&gNvVariableInfoGuid, NvVariableHob);
+  }
+
+  //
+  // Build CPU memory space and IO space hob
+  //
+  AsmCpuid (0x80000000, &RegEax, NULL, NULL, NULL);
+  if (RegEax >= 0x80000008) {
+    AsmCpuid (0x80000008, &RegEax, NULL, NULL, NULL);
+    PhysicalAddressBits = (UINT8) RegEax;
+  } else {
+    PhysicalAddressBits  = 36;
+  }
+  BuildCpuHob (PhysicalAddressBits, 16);
+
+  //
+  // Report Local APIC range
+  //
+  ResourceAttribute = EFI_RESOURCE_ATTRIBUTE_PRESENT | EFI_RESOURCE_ATTRIBUTE_INITIALIZED |\
+                      EFI_RESOURCE_ATTRIBUTE_UNCACHEABLE | EFI_RESOURCE_ATTRIBUTE_TESTED;
+  BuildResourceDescriptorHob (EFI_RESOURCE_MEMORY_MAPPED_IO, ResourceAttribute, 0xFEC80000, SIZE_512KB);
+  BuildMemoryAllocationHob ( 0xFEC80000, SIZE_512KB, EfiMemoryMappedIO);
 
   return LdrGlobal->LdrHobList;
 }

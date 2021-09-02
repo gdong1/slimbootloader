@@ -81,6 +81,12 @@
 #include <Library/LocalApicLib.h>
 #include <Library/TccLib.h>
 #include "Dts.h"
+#include <Guid/SmramMemoryReserve.h>
+#include <Guid/SmmRegisterInfoGuid.h>
+//#include <Guid/SmmS3CommunicationInfoGuid.h>
+#include <Guid/SpiFlashInfoGuid.h>
+#include <Guid/NvVariableInfoGuid.h>
+#include <UniversalPayload/SerialPortInfo.h>
 
 // GPIO group table to convert from alphabet group index to pad group ID
 CONST UINT8 mPchGpioGroup[2][26] = {
@@ -1963,6 +1969,164 @@ UpdateSmmInfo (
 
 
 /**
+ Update SMM register info.
+
+ @param[out] SmmRegHob     pointer to SMM register HOB
+
+**/
+VOID
+UpdateSmmRegisterInfo (
+  OUT  UNIVERSAL_PAYLOAD_SMM_REGISTERS           *SmmRegHob
+)
+{
+  UNIVERSAL_PAYLOAD_GENERIC_REGISTER             *Reg;
+
+  if (SmmRegHob == NULL) {
+    return;
+  }
+
+  SmmRegHob->Revision = 0;
+  SmmRegHob->Count    = 5;
+
+  Reg = &SmmRegHob->Registers[0];
+  Reg->Id                        = REGISTER_ID_SMI_GBL_EN;
+  Reg->Value                     = 1;
+  Reg->Address.AddressSpaceId    = EFI_ACPI_3_0_SYSTEM_IO;
+  Reg->Address.RegisterBitWidth  = 1;
+  Reg->Address.RegisterBitOffset = (UINT8)HighBitSet32 (B_ACPI_IO_SMI_EN_GBL_SMI);
+  Reg->Address.AccessSize        = EFI_ACPI_3_0_DWORD;
+  Reg->Address.Address           = ACPI_BASE_ADDRESS + R_ACPI_IO_SMI_EN;
+
+  Reg++;
+  Reg->Id                        = REGISTER_ID_SMI_GBL_EN_LOCK;
+  Reg->Value                     = 1;
+  Reg->Address.AddressSpaceId    = EFI_ACPI_3_0_SYSTEM_MEMORY;
+  Reg->Address.RegisterBitWidth  = 1;
+  Reg->Address.RegisterBitOffset = (UINT8)HighBitSet32 (B_PMC_PWRM_GEN_PMCON_B_SMI_LOCK);
+  Reg->Address.AccessSize        = EFI_ACPI_3_0_DWORD;
+  Reg->Address.Address           = PCH_PWRM_BASE_ADDRESS + R_PMC_PWRM_GEN_PMCON_B;
+
+  Reg++;
+  Reg->Id                        = REGISTER_ID_SMI_EOS;
+  Reg->Value                     = 1;
+  Reg->Address.AddressSpaceId    = EFI_ACPI_3_0_SYSTEM_IO;
+  Reg->Address.RegisterBitWidth  = 1;
+  Reg->Address.RegisterBitOffset = (UINT8)HighBitSet32 (B_ACPI_IO_SMI_EN_EOS);
+  Reg->Address.AccessSize        = EFI_ACPI_3_0_DWORD;
+  Reg->Address.Address           = ACPI_BASE_ADDRESS + R_ACPI_IO_SMI_EN;
+
+  Reg++;
+  Reg->Id                        = REGISTER_ID_SMI_APM_EN;
+  Reg->Value                     = 1;
+  Reg->Address.AddressSpaceId    = EFI_ACPI_3_0_SYSTEM_IO;
+  Reg->Address.RegisterBitWidth  = 1;
+  Reg->Address.RegisterBitOffset = (UINT8)HighBitSet32 (B_ACPI_IO_SMI_EN_APMC);
+  Reg->Address.AccessSize        = EFI_ACPI_3_0_DWORD;
+  Reg->Address.Address           = ACPI_BASE_ADDRESS + R_ACPI_IO_SMI_EN;
+
+  Reg++;
+  Reg->Id                        = REGISTER_ID_SMI_APM_STS;
+  Reg->Value                     = 1;
+  Reg->Address.AddressSpaceId    = EFI_ACPI_3_0_SYSTEM_IO;
+  Reg->Address.RegisterBitWidth  = 1;
+  Reg->Address.RegisterBitOffset = (UINT8)HighBitSet32 (B_PCH_SMI_STS_APM);
+  Reg->Address.AccessSize        = EFI_ACPI_3_0_DWORD;
+  Reg->Address.Address           = ACPI_BASE_ADDRESS + R_ACPI_IO_SMI_STS;
+
+}
+
+
+/**
+ Update SMM memory info.
+
+ @param[out] SmramHob     pointer to SMM memory HOB
+
+**/
+VOID
+UpdateSmmMemoryInfo (
+  OUT EFI_SMRAM_HOB_DESCRIPTOR_BLOCK   *SmramHob
+  )
+{
+  UINT32                               SmmBase;
+  UINT32                               SmmSize;
+
+  if (SmramHob == NULL) {
+    return;
+  }
+
+  SmramHob->NumberOfSmmReservedRegions  = 2;
+  SmmBase = MmioRead32 (TO_MM_PCI_ADDRESS (0x00000000) + R_SA_TSEGMB) & ~0xF;
+  SmmSize = (MmioRead32 (TO_MM_PCI_ADDRESS (0x00000000) + R_SA_BGSM) & ~0xF) - SmmBase;
+  SmramHob->Descriptor[0].CpuStart      = SmmBase;
+  SmramHob->Descriptor[0].PhysicalStart = SmmBase;
+  SmramHob->Descriptor[0].PhysicalSize  = SIZE_4KB;
+  SmramHob->Descriptor[0].RegionState   = EFI_ALLOCATED;
+
+  SmramHob->Descriptor[1].CpuStart      = SmmBase + SIZE_4KB;
+  SmramHob->Descriptor[1].PhysicalStart = SmmBase + SIZE_4KB;
+  SmramHob->Descriptor[1].PhysicalSize  = SmmSize - SIZE_4KB;
+  SmramHob->Descriptor[1].RegionState   = 0;
+}
+
+
+
+/**
+ Update SPI flash info.
+
+ @param[out] SmmRegHob     pointer to SPI flash info HOB
+
+**/
+VOID
+UpdateSpiFlashInfo (
+  OUT SPI_FLASH_INFO           *SpiFlashInfo
+  )
+{
+
+  if (SpiFlashInfo == NULL) {
+    return;
+  }
+
+  SpiFlashInfo->Revision                     = 0;
+  SpiFlashInfo->Flags                        = FLAGS_SPI_DISABLE_SMM_WRITE_PROTECT;
+  SpiFlashInfo->SpiAddress.AddressSpaceId    = SPACE_ID_PCI_CONFIGURATION;
+  SpiFlashInfo->SpiAddress.RegisterBitWidth  = 32;
+  SpiFlashInfo->SpiAddress.RegisterBitOffset = 0;
+  SpiFlashInfo->SpiAddress.AccessSize        = REGISTER_BIT_WIDTH_DWORD;
+  SpiFlashInfo->SpiAddress.Address           = TO_MM_PCI_ADDRESS (GetDeviceAddr (4, 0));
+
+  DEBUG ((DEBUG_INFO, "--PchSpiBase at 0x%lX\n", SpiFlashInfo->SpiAddress.Address));
+}
+
+/**
+ Update NV variable info.
+
+ @param[out] NvVariableInfo     pointer to NV variable info HOB
+
+**/
+VOID
+UpdateNvVariableInfo (
+  OUT NV_VARIABLE_INFO           *NvVariableInfo
+  )
+{
+  EFI_STATUS                     Status;
+  UINT32                         Base;
+  UINT32                         Size;
+  if (NvVariableInfo == NULL) {
+    return;
+  }
+
+  Status = GetComponentInfo (FLASH_MAP_SIG_UEFIVARIABLE, &Base, &Size);
+  if (EFI_ERROR (Status)) {
+    return ;
+  }
+
+  NvVariableInfo->Revision           = 0;
+  NvVariableInfo->VariableStoreBase  = Base;
+  NvVariableInfo->VariableStoreSize  = Size;
+}
+
+
+/**
   Update Serial Interface Information for Payload
 
   @param[in]  SerialPortInfo    Serial Interface Information to be updated for Payload
@@ -1985,6 +2149,29 @@ UpdateSerialPortInfo (
   }
 }
 
+/**
+  Update Serial Interface Information for Payload
+
+  @param[in]  SerialPortInfo    Serial Interface Information to be updated for Payload
+
+**/
+VOID
+EFIAPI
+UpdatePldSerialPortInfo (
+  IN  UNIVERSAL_PAYLOAD_SERIAL_PORT_INFO  *SerialPortInfo
+)
+{
+  SerialPortInfo->RegisterBase   = GetSerialPortBase();
+  SerialPortInfo->RegisterStride = GetSerialPortStrideSize();
+  if (GetDebugPort () >= PCH_MAX_SERIALIO_UART_CONTROLLERS) {
+    // IO Type
+    SerialPortInfo->UseMmio       = FALSE;
+  } else {
+    // MMIO Type
+    SerialPortInfo->UseMmio       = TRUE;
+  }
+
+}
 /**
  Update Hob Info with platform specific data
 
@@ -2014,6 +2201,16 @@ PlatformUpdateHobInfo (
     UpdateSmmInfo (HobInfo);
   } else if (Guid == &gLoaderPlatformInfoGuid) {
     UpdateLoaderPlatformInfo (HobInfo);
+  } else if (Guid == &gPldSmmRegisterInfoGuid) {
+    UpdateSmmRegisterInfo (HobInfo);
+  } else if (Guid == &gEfiSmmSmramMemoryGuid) {
+    UpdateSmmMemoryInfo (HobInfo);
+  } else if (Guid == &gSpiFlashInfoGuid) {
+    UpdateSpiFlashInfo (HobInfo);
+  } else if (Guid == &gNvVariableInfoGuid) {
+    UpdateNvVariableInfo (HobInfo);
+  } else if (Guid == &gUniversalPayloadSerialPortInfoGuid) {
+    UpdatePldSerialPortInfo (HobInfo);
   }
 }
 

@@ -75,6 +75,11 @@
   gEfiGraphicsInfoHobGuid
   gCpuInitDataHobGuid
   gSiFusaInfoGuid
+  gPldSmmRegisterInfoGuid
+  gEfiSmmSmramMemoryGuid
+  gSpiFlashInfoGuid
+  gNvVariableInfoGuid
+  gUniversalPayloadSerialPortInfoGuid
 
 [Pcd]
   gPlatformModuleTokenSpaceGuid.PcdGraphicsVbtAddress
