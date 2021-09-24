@@ -68,7 +68,7 @@
   StageLib
   ThunkLib
   LocalApicLib
-  #UniversalPayloadLib
+  UniversalPayloadLib
 
 [Guids]
   gFspReservedMemoryResourceHobGuid
@@ -99,7 +99,7 @@
   gEfiSmmSmramMemoryGuid
   gSpiFlashInfoGuid
   gNvVariableInfoGuid
-  gLoadedPayloadImageInfoGuid
+  gUniversalPayloadExtraDataGuid
 
 [Pcd]
   gPlatformCommonLibTokenSpaceGuid.PcdMaxLibraryDataEntry

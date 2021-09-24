@@ -248,16 +248,22 @@ def get_gcc_info ():
     valid = is_valid_tool_version(cmd, ver)
     return (toolchain if valid else None, None, None, ver)
 
-def get_clang_info ():
+def get_clang_info (toolchain_preferred = 'clangpdb'):
     if os.name == 'posix':
         toolchain_path   = ''
     else:
         # On windows, still need visual studio to provide nmake build utility
+        toolchain = ''
         toolchain, toolchain_prefix, toolchain_path, toolchain_ver = get_visual_studio_info ()
         os.environ['CLANG_HOST_BIN'] =  os.path.join(toolchain_path, "bin\\Hostx64\\x64\\n")
         toolchain_path   = 'C:\\Program Files\\LLVM\\bin\\'
-    toolchain        = 'CLANGPDB'
-    toolchain_prefix = 'CLANG_BIN'
+        toolchain_prefix = 'CLANG_BIN'
+        if toolchain_preferred == 'clangdwarf':
+            toolchain        = 'CLANGDWARF'
+        elif toolchain_preferred == 'clangpdb':
+            toolchain        = 'CLANGDPDB'
+        else:
+            toolchain        = ''
     cmd = os.path.join(toolchain_path, 'clang')
     try:
         ver_str = subprocess.check_output([cmd, '--version']).decode().strip()
@@ -706,7 +712,7 @@ def gen_payload_bin (fv_dir, arch_dir, pld_list, pld_bin, priv_key, hash_alg, si
     auth_type = key_type + '_' + sign_scheme +  '_' + hash_alg
     pld_list = [('EPLD', '%s' % epld_bin, '', auth_type, '%s' % os.path.basename(priv_key), alignment, 0, svn)]
     for pld in ext_list:
-        pld_list.append ((pld['name'], pld['file'], pld['algo'], hash_alg, '', 0, 0, svn))
+        pld_list.append ((pld['name'], pld['file'], pld['algo'], 'NONE', '', 0, 0, svn))
     gen_container_bin ([pld_list], fv_dir, fv_dir, key_dir, '')
 
 def pub_key_valid (pubkey):
@@ -978,9 +984,9 @@ def check_for_git():
 def check_for_toolchain(toolchain_preferred):
     toolchain = None
     if toolchain_preferred.startswith('clang'):
-        toolchain, toolchain_prefix, toolchain_path, toolchain_ver = get_clang_info ()
+        toolchain, toolchain_prefix, toolchain_path, toolchain_ver = get_clang_info (toolchain_preferred)
     elif sys.platform == 'darwin':
-        toolchain, toolchain_prefix, toolchain_path, toolchain_ver = get_clang_info ()
+        toolchain, toolchain_prefix, toolchain_path, toolchain_ver = get_clang_info (toolchain_preferred)
         toolchain, toolchain_prefix, toolchain_path = 'XCODE5', None, None
     elif os.name == 'posix':
         toolchain, toolchain_prefix, toolchain_path, toolchain_ver = get_gcc_info ()

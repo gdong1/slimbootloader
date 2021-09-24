@@ -8,7 +8,7 @@
 #ifndef _UNIVERSAL_PAYLOAD_LIB_H_
 #define _UNIVERSAL_PAYLOAD_LIB_H_
 
-#include <Guid/LoadedPayloadImageInfoGuid.h>
+#include <UniversalPayload/LoadedPayloadImageInfoGuid.h>
 #include <UniversalPayload/UniversalPayload.h>
 
 #pragma pack(1)
