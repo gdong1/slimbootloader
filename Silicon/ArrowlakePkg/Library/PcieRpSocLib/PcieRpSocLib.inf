@@ -25,12 +25,17 @@ DebugLib
 PciSegmentLib
 BaseMemoryLib
 P2SbSocLib
-PchP2sbLib
+P2sbLib
 
 [Packages]
 MdePkg/MdePkg.dec
 BootloaderCorePkg/BootloaderCorePkg.dec
+BootloaderCommonPkg/BootloaderCommonPkg.dec
 Silicon/ArrowlakePkg/ArrowlakePkg.dec
+Silicon/CommonSocPkg/CommonSocPkg.dec
 
 [Sources]
 PcieRpSocLib.c
+
+[FixedPcd]
+  gPlatformArrowLakeTokenSpaceGuid.PcdMtlSSupport

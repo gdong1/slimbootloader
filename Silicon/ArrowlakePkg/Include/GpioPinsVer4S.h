@@ -397,6 +397,7 @@
 // If certain signal is not listed below it means that it can be enabled
 // only on a single pad and muxing setting is not needed.
 //
+/*
 #define GPIO_VER6_SOC_M_MUXING_ISH_SPI0_CS_GPP_D5         0x3A2CA005 // Native Function 3
 #define GPIO_VER6_SOC_M_MUXING_ISH_SPI0_CS_GPP_F17        0x4A26A011 // Native Function 4
 #define GPIO_VER6_SOC_M_MUXING_ISH_SPI0_CLK_GPP_D6        0x3A2C9006 // Native Function 3
@@ -469,5 +470,6 @@
 #define GPIO_VER6_SOC_M_MUXING_SERIALIO_UART1_RXD_GPP_H14 0x2A05040E // Native Function 2
 #define GPIO_VER6_SOC_M_MUXING_SERIALIO_UART1_TXD_GPP_H7  0x2A051407 // Native Function 2
 #define GPIO_VER6_SOC_M_MUXING_SERIALIO_UART1_TXD_GPP_H15 0x2A05140F // Native Function 2
+*/
 
 #endif // _GPIO_PINS_VER4_S_H_

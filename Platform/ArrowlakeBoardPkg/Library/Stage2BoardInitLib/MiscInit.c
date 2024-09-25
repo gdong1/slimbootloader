@@ -7,12 +7,39 @@
 
 #include "Stage2BoardInitLib.h"
 #include <GpioPinsVer4S.h>
-#include <GpioPinsVer2Lp.h>
 
 #define GPIO_CFG_PIN_TO_PAD(A) \
   ((UINT32) (((A).PinNumber) | (((A).PadGroup) << 16)))
 
 #define PCH_RESERVED_ABOVE_4G_BASE_ADDRESS  0x3FFC0000000  ///< Pch preserved MMIO base address
+
+#pragma pack (push,1)
+
+/**
+  Structure describes severity programming for EAH.
+  This will be used to keep severity programming aligned
+  between EAH and IEH being on different Si parts.
+**/
+typedef struct {
+  BOOLEAN    UrSeverityAsFatal;            // Report UR issue as fatal error
+  BOOLEAN    UcSeverityAsFatal;            // Report UC issue as fatal error
+  BOOLEAN    CommandParitySeverityAsFatal; // Report Command Parity issue as fatal error
+} FABRIC_SEVERITY;
+
+typedef struct {
+  UINT8              SegmentNumber;
+  UINT8              BusNumber;
+  UINT8              SubordinateBusNumber;
+  UINT32             ReservedMmioBase;
+  UINT32             ReservedMmioLimit;
+  UINT64             ReservedMmio64Base;
+  UINT64             ReservedMmio64Limit;
+  UINT16             ReservedIoBase;
+  UINT16             ReservedIoLimit;
+  FABRIC_SEVERITY    FabricSeverity;
+} MTL_PCH_CONFIGURATION;
+
+#pragma pack (pop)
 
 /**
   Platform specific Pre Pci Enumeration
@@ -31,6 +58,7 @@ PlatformPrePciEnumeration (
   EFI_HOB_GUID_TYPE         *GuidHob;
   IIO_RES_HOB               *IioResHob;
   VOID                      *FspHobList;
+  MTL_PCH_CONFIGURATION     *PchConfig;
 
   if (!IsPchS()) {
     //only ARL-S needs 2nd root bridge for PCH resources.
@@ -94,6 +122,24 @@ PlatformPrePciEnumeration (
   }
 
   (VOID) PcdSet32S (PcdPciResAllocTableBase, (UINT32)(UINTN)ResAllocTable);
+
+
+  GuidHob = GetNextGuidHob (&gPchConfigGuid, FspHobList);
+  if (GuidHob == NULL) {
+    DEBUG((DEBUG_INFO, "PCH config HOB is not found!\n"));
+  } else {
+    PchConfig = (MTL_PCH_CONFIGURATION*)(GuidHob + 1);
+	DEBUG ((DEBUG_INFO, "  SegmentNumber : 0x%X\n", PchConfig->SegmentNumber));
+	DEBUG ((DEBUG_INFO, "  BusNumber : 0x%X\n", PchConfig->BusNumber));
+	DEBUG ((DEBUG_INFO, "  SubordinateBusNumber : 0x%X\n", PchConfig->SubordinateBusNumber));
+	DEBUG ((DEBUG_INFO, "  ReservedMmioBase : 0x%X\n", PchConfig->ReservedMmioBase));
+	DEBUG ((DEBUG_INFO, "  ReservedMmioLimit : 0x%X\n", PchConfig->ReservedMmioLimit));
+	DEBUG ((DEBUG_INFO, "  ReservedMmio64Base : 0x%llX\n", PchConfig->ReservedMmio64Base));
+	DEBUG ((DEBUG_INFO, "  ReservedMmio64Limit : 0x%llX\n", PchConfig->ReservedMmio64Limit));
+	DEBUG ((DEBUG_INFO, "  ReservedIoBase : 0x%X\n", PchConfig->ReservedIoBase));
+	DEBUG ((DEBUG_INFO, "  ReservedIoLimit : 0x%X\n", PchConfig->ReservedIoLimit));
+  }
+
 }
 
 
@@ -106,12 +152,9 @@ UpdatePayloadId (
   VOID
   )
 {
-  EFI_STATUS        Status = EFI_SUCCESS;
   UINT32            PayloadId;
   GEN_CFG_DATA      *GenericCfgData;
-  PLDSEL_CFG_DATA   *PldSelCfgData;
   UINT32            PayloadSelGpioData;
-  UINT32            PayloadSelGpioPad;
   UINT8             CmosData;
 
   PayloadSelGpioData = 0;
@@ -165,29 +208,4 @@ UpdatePayloadId (
     return;
   }
 
-  //
-  // Switch payloads based on configured GPIO pin
-  //
-  PldSelCfgData = (PLDSEL_CFG_DATA *)FindConfigDataByTag (CDATA_PLDSEL_TAG);
-  if ((PldSelCfgData != NULL) && (PldSelCfgData->PldSelGpio.Enable != 0)){
-    if (IsPchS ()) {
-      PayloadSelGpioPad = GPIO_CFG_PIN_TO_PAD(PldSelCfgData->PldSelGpio) | (GPIO_VER4_S_CHIPSET_ID << 24);
-    } else if (IsPchP ()) {
-      PayloadSelGpioPad = GPIO_CFG_PIN_TO_PAD(PldSelCfgData->PldSelGpio) | (GPIO_VER2_LP_CHIPSET_ID << 24);
-    } else {
-      DEBUG ((DEBUG_WARN, "Unknown PCH in UpdatePayloadId\n"));
-      return;
-    }
-    Status = GpioGetInputValue (PayloadSelGpioPad, &PayloadSelGpioData);
-    if (!EFI_ERROR (Status)) {
-      if (PayloadSelGpioData != PldSelCfgData->PldSelGpio.PinPolarity) {
-        PayloadId = UEFI_PAYLOAD_ID_SIGNATURE;
-      } else {
-        PayloadId = 0;
-      }
-      DEBUG ((DEBUG_INFO, "Set PayloadId to 0x%08X based on GPIO config\n", PayloadId));
-    }
-  }
-
-  SetPayloadId (PayloadId);
 }

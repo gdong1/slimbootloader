@@ -10,7 +10,6 @@
 #include <Library/IoLib.h>
 #include <Library/PciLib.h>
 #include <Library/PchInfoLib.h>
-#include <Library/PchPcrLib.h>
 #include <Library/BootloaderCommonLib.h>
 #include <Library/BootloaderCoreLib.h>
 #include <PchReservedResources.h>

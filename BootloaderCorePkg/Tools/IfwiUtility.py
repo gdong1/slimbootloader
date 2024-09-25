@@ -333,6 +333,7 @@ class UCODE_PARSER:
     @staticmethod
     def extract (bin, out_dir):
         ucode_list = UCODE_PARSER.parse (bin)
+        idx = 0
         for idx, bin in enumerate(ucode_list):
             ucode_hdr = UCODE_HEADER.from_buffer(bin)
             name = '%03d0_%08X_%08X.mcb' % (idx, ucode_hdr.processor_signature, ucode_hdr.update_revision)

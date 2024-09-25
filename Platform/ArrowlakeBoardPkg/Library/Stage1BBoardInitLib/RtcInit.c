@@ -15,7 +15,6 @@
 #include <PlatformBase.h>
 #include <Register/PchRegsPcr.h>
 #include <Register/PchRegsLpc.h>
-#include <Library/PchPcrLib.h>
 #include <Library/PchInfoLib.h>
 #include <Register/PchRegsPcr.h>
 #include <Include/PcrDefine.h>

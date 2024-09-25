@@ -360,13 +360,7 @@ SecStartup2 (
     SetLibraryData (PcdGet8 (PcdPcdLibId), LdrGlobal->PcdDataPtr, BufInfo->AllocLen);
   }
 
-  if (PcdGetBool (PcdIdenticalTopSwapsBuilt)) {
-    if (!EFI_ERROR (GetBootPartition (&Partition))) {
-      SetCurrentBootPartition (Partition);
-    }
-  } else if (FlashMap != NULL) {
-    SetCurrentBootPartition ((FlashMap->Attributes & FLASH_MAP_ATTRIBUTES_BACKUP_REGION) ? BackupPartition : PrimaryPartition);
-  }
+
 
   // Call board hook to enable debug
   BoardInit (PostTempRamInit);
@@ -374,6 +368,15 @@ SecStartup2 (
 
   // Set DebugPrintErrorLevel to default PCD.
   SetDebugPrintErrorLevel (PcdGet32 (PcdDebugPrintErrorLevel));
+
+  if (PcdGetBool (PcdIdenticalTopSwapsBuilt)) {
+    if (!EFI_ERROR (GetBootPartition (&Partition))) {
+      DEBUG ((DEBUG_INFO, "GetBootPartition = %x\n", Partition));
+      SetCurrentBootPartition (Partition);
+    }
+  } else if (FlashMap != NULL) {
+    SetCurrentBootPartition ((FlashMap->Attributes & FLASH_MAP_ATTRIBUTES_BACKUP_REGION) ? BackupPartition : PrimaryPartition);
+  }
 
   if (DebugCodeEnabled()) {
     DEBUG ((DEBUG_INFO, "\n============= %a STAGE1A =============\n",mBootloaderName));

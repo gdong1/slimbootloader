@@ -828,4 +828,8 @@ UpdateFspConfig (
       DEBUG ((DEBUG_INFO, "Stage 2 S0ix config applied.\n"));
     }
   }
+
+  FspsConfig->PchUnlockGpioPads = 1;
+  FspsConfig->PchSbAccessUnlock = 1;
+  FspsConfig->PchLockDownBiosInterface = FALSE;
 }

@@ -65,6 +65,7 @@
 #define R_GPIOV2_MTL_PCH_S_PCR_MISCCFG                             0x0010
 #define R_GPIOV2_MTL_PCH_S_PCR_G0_RCP_DW0                          0x0020
 
+
 //
 // GPE to Gpio Group mapping
 //
