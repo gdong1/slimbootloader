@@ -11,7 +11,7 @@
 #define _METEOR_LAKE_P_DDR5_CRB_PREMEM_GPIO_TABLE_H_
 
 #include <GpioV2PinsMtlSoc.h>
-#include <Include/GpioV2Config.h>
+#include <Library/GpioV2Lib.h>
 
 GLOBAL_REMOVE_IF_UNREFERENCED GPIOV2_INIT_CONFIG mGpioTablePreMemMtlPSbsRvpDimm[] =
 {
@@ -87,7 +87,7 @@ GLOBAL_REMOVE_IF_UNREFERENCED GPIOV2_INIT_CONFIG mGpioTablePreMemMtlPSbsRvpDimm[
 };
 
 
-GLOBAL_REMOVE_IF_UNREFERENCED GPIO_INIT_CONFIG mGpioTablePreMemMtlPSbsRvpTempDimm[] =
+GLOBAL_REMOVE_IF_UNREFERENCED GPIOV2_INIT_CONFIG mGpioTablePreMemMtlPSbsRvpTempDimm[] =
 {
 //
 //Type-C , TBT Re-Timers
