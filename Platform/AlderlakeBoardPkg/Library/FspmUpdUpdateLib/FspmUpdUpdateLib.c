@@ -549,14 +549,7 @@ UpdateFspConfig (
   Fspmcfg->DdiPort4Ddc = SaDisplayConfigTable[15];
 
   if (GetBootMode() == BOOT_ON_FLASH_UPDATE) {
-    //
-    // WA - Microcode issue is causing assert in FSP during
-    // firmware update mode. Avoiding this UPD set until
-    // microcode issue is resolved.
-    //
-#if 0
     Fspmcfg->SiSkipOverrideBootModeWhenFwUpdate = TRUE;
-#endif
   }
 
   if (IsPchLp ()) {

@@ -100,13 +100,6 @@ SetBootPartition (
   IN BOOT_PARTITION  Partition
   )
 {
-  //
-  // WA - Microcode issue is causing assert in FSP during
-  // firmware update mode. As a result all SB access will be
-  // blocked and following code cannot be used at this phase.
-  // WA added in early stage code to handle this functionality.
-  //
-#if 0
   UINTN     P2sbBase;
   UINT32    P2sbBar;
   UINT32    TopSwapReg;
@@ -161,12 +154,7 @@ SetBootPartition (
   }
 
   DEBUG ((DEBUG_INFO, "Read it to ensure data is written. Data32=0x%x\n", Data32));
-#endif
-  // Need to signal for TS back to other partition in SG1B, since TS
-  // is blocked from being performed in FWU payload
-  if (GetCurrentBootPartition () != Partition) {
-    SetTopSwapTrigger ();
-  }
+
   return EFI_SUCCESS;
 }
 

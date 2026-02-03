@@ -784,14 +784,7 @@ UpdateFspConfig (
   FspsConfig->IehMode = 0x0;
   FspsConfig->PchCrid = 0x0;
   if (GetBootMode() == BOOT_ON_FLASH_UPDATE) {
-    //
-    // WA - Microcode issue is causing assert in FSP during
-    // firmware update mode. Avoiding this UPD set until
-    // microcode issue is resolved.
-    //
-#if 0
     FspsUpd->FspsConfig.SiSkipBiosDoneWhenFwUpdate = TRUE;
-#endif
     FspsUpd->FspsConfig.PchLockDownBiosInterface = FALSE;
     FspsUpd->FspsConfig.PchSbAccessUnlock        = TRUE;
     FspsUpd->FspsConfig.RtcBiosInterfaceLock = FALSE;
