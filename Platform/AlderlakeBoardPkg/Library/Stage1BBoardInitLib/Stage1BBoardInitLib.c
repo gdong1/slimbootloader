@@ -232,6 +232,55 @@ PlatformDeviceTableInitialize (
 }
 
 /**
+  Switches the active boot partition by setting the Top Swap (TS) register bit.
+
+  This function ensures a safe transition between boot partitions. It prefetches
+  the entire Stage1B code from the current boot partition into the CPU cache before
+  setting the TS bit, preventing instruction fetches from the new partition until
+  after a system reset. Once the TS bit is set, the partition switch takes effect
+  immediately.
+
+  @param[in] Partition        Boot partition to select (e.g., Primary or Backup).
+
+**/
+VOID
+SwitchBootPartitionAndReset (
+  IN BOOT_PARTITION  Partition
+  )
+{
+  EFI_STATUS        Status;
+  UINT32            TopSwapRegionSize;
+  UINT32            Stage1BRegionBase;
+  UINT32            Stage1BRegionSize;
+  volatile UINT32   Dummy;
+  UINT32            Index;
+  FLASH_MAP         *FlashMap;
+
+  //
+  // IMPORTANT: Setting the TS bit takes effect immediately, switching the boot partition.
+  // To avoid fetching instructions from the new partition before reset, prefetch the entire
+  // Stage1B SBL code from the current boot partition into cache. This ensures all instructions
+  // needed before reset are available in cache and not fetched from flash after TS is set.
+  //
+  FlashMap = GetFlashMapPtr();
+  TopSwapRegionSize = GetRegionOffsetSize(FlashMap, FLASH_MAP_FLAGS_TOP_SWAP, NULL);
+  Status = GetComponentInfoByPartition (FLASH_MAP_SIG_STAGE1B, FALSE, &Stage1BRegionBase, &Stage1BRegionSize);
+  if (!EFI_ERROR (Status) && (Stage1BRegionBase >= (SIZE_4GB - TopSwapRegionSize *2))) {
+    // Stage1B is in topswap region
+    // RegionSize covers the entire Stage1B, including FSP and config data.
+    // Assume SBL code size inside Stage1B region is no more than 0x20000 (128KB)
+    Stage1BRegionBase = Stage1BRegionBase + Stage1BRegionSize - 0x20000;
+    Stage1BRegionSize = 0x20000;
+    for (Index = 0; Index < Stage1BRegionSize; Index += 64) { // 64-byte stride for cache line prefetch
+      Dummy = *(UINT8 *)(UINTN)(Stage1BRegionBase + Index);
+    }
+  }
+
+  SetBootPartition (Partition);
+  ResetSystem (EfiResetCold);
+}
+
+/**
   Set TS based on FW update status.
   This function will set the TS register based on the FW update status.
   The TS register is set here as opposed to in the FW update payload due to a
@@ -273,8 +322,7 @@ FwuTopSwapSetting (
       if (GetCurrentBootPartition () == PrimaryPartition) {
         if (IsTopSwapTriggered ()) {
           ClearTopSwapTrigger ();
-          SetBootPartition (BackupPartition);
-          ResetSystem (EfiResetCold);
+          SwitchBootPartitionAndReset (BackupPartition);
         }
       } else {
         if (IsTopSwapTriggered ()) {
@@ -296,8 +344,7 @@ FwuTopSwapSetting (
       if (GetCurrentBootPartition () == BackupPartition) {
         if (IsTopSwapTriggered ()) {
           ClearTopSwapTrigger ();
-          SetBootPartition (PrimaryPartition);
-          ResetSystem (EfiResetCold);
+          SwitchBootPartitionAndReset (PrimaryPartition);
         }
       } else {
         if (IsTopSwapTriggered ()) {
