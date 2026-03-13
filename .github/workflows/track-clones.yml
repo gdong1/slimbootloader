@@ -1,0 +1,110 @@
+name: Track Clone Statistics
+
+on:
+  schedule:
+    # Runs every 12 hours to ensure no data gaps
+    - cron: '0 */12 * * *'
+  workflow_dispatch: # Allow manual trigger for testing
+
+jobs:
+  track-clones:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout traffic-data branch
+        uses: actions/checkout@v4
+        with:
+          ref: traffic-data
+
+      - name: Fetch clone data and append
+        env:
+          GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
+        run: |
+          mkdir -p traffic-data
+
+          echo "=== Fetching clone data from slimbootloader/slimbootloader ==="
+          HTTP_CODE=$(curl -s -o traffic-data/latest_clones.json -w "%{http_code}" \
+            -H "Authorization: token $GH_TOKEN" \
+            https://api.github.com/repos/slimbootloader/slimbootloader/traffic/clones)
+
+          echo "HTTP Response Code: $HTTP_CODE"
+          cat traffic-data/latest_clones.json
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::Failed to fetch clone data (HTTP $HTTP_CODE). Check token permissions."
+            exit 1
+          fi
+
+          echo "=== Fetching view data ==="
+          curl -s -H "Authorization: token $GH_TOKEN" \
+            https://api.github.com/repos/slimbootloader/slimbootloader/traffic/views \
+            > traffic-data/latest_views.json
+
+          echo "=== Processing data ==="
+          python3 - <<'PYEOF'
+          import json
+          import csv
+          import os
+          from datetime import datetime
+
+          def append_traffic_data(json_file, csv_file, data_key):
+              with open(json_file) as f:
+                  data = json.load(f)
+
+              existing_dates = set()
+              if os.path.exists(csv_file):
+                  with open(csv_file, "r") as f:
+                      reader = csv.DictReader(f)
+                      for row in reader:
+                          existing_dates.add(row["date"])
+
+              write_header = not os.path.exists(csv_file) or os.path.getsize(csv_file) == 0
+              new_entries = 0
+              with open(csv_file, "a", newline="") as f:
+                  writer = csv.writer(f)
+                  if write_header:
+                      writer.writerow(["date", "total", "unique"])
+                  for entry in data.get(data_key, []):
+                      date = entry["timestamp"][:10]
+                      if date not in existing_dates:
+                          writer.writerow([date, entry["count"], entry["uniques"]])
+                          new_entries += 1
+
+              total = data.get("count", 0)
+              uniques = data.get("uniques", 0)
+              print(f"  {data_key}: {new_entries} new entries | Last 14d total: {total}, unique: {uniques}")
+
+          print("Processing clones...")
+          append_traffic_data(
+              "traffic-data/latest_clones.json",
+              "traffic-data/clone_history.csv",
+              "clones"
+          )
+
+          print("Processing views...")
+          append_traffic_data(
+              "traffic-data/latest_views.json",
+              "traffic-data/view_history.csv",
+              "views"
+          )
+
+          # Write a summary
+          now = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+          with open("traffic-data/last_updated.txt", "w") as f:
+              f.write(f"Last updated: {now}\n")
+          print(f"Done at {now}")
+          PYEOF
+
+      - name: Commit and push to traffic-data branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add traffic-data/
+          if git diff --cached --quiet; then
+            echo "No new data to commit."
+          else
+            git commit -m "Update traffic statistics $(date -u +%Y-%m-%d)"
+            git push origin traffic-data
+          fi
