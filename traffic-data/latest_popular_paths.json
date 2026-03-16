@@ -2,26 +2,26 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "slimbootloader/slimbootloader: Visit http://slimbootloader.github.io for docu...",
-    "count": 333,
-    "uniques": 149
+    "count": 327,
+    "uniques": 151
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "Pull requests · slimbootloader/slimbootloader",
-    "count": 236,
+    "count": 234,
     "uniques": 27
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "Commits · slimbootloader/slimbootloader",
-    "count": 86,
-    "uniques": 24
+    "count": 83,
+    "uniques": 23
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "slimbootloader/slimbootloader: Visit http://slimbootloader.github.io for docu...",
-    "count": 68,
-    "uniques": 20
+    "count": 67,
+    "uniques": 21
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2634",
@@ -32,8 +32,8 @@
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "slimbootloader/slimbootloader: Visit http://slimbootloader.github.io for docu...",
-    "count": 54,
-    "uniques": 30
+    "count": 56,
+    "uniques": 32
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2636",
@@ -48,15 +48,15 @@
     "uniques": 14
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2631",
-    "title": "Move AmtLib to common Soc library by tsaikevin · Pull Request #2631 · slimboo...",
-    "count": 37,
-    "uniques": 6
-  },
-  {
     "path": "/slimbootloader/slimbootloader/issues/474",
     "title": "Failed to build QEMU FSP binary · Issue #474 · slimbootloader/slimbootloader",
-    "count": 33,
+    "count": 34,
     "uniques": 2
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2631",
+    "title": "Move AmtLib to common Soc library by tsaikevin · Pull Request #2631 · slimboo...",
+    "count": 31,
+    "uniques": 6
   }
 ]
