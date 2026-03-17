@@ -1,13 +1,13 @@
 [
   {
     "referrer": "github.com",
-    "count": 493,
-    "uniques": 77
+    "count": 510,
+    "uniques": 80
   },
   {
     "referrer": "Google",
-    "count": 129,
-    "uniques": 44
+    "count": 132,
+    "uniques": 45
   },
   {
     "referrer": "slimbootloader.github.io",
@@ -31,8 +31,8 @@
   },
   {
     "referrer": "basicinputoutput.com",
-    "count": 3,
-    "uniques": 2
+    "count": 5,
+    "uniques": 4
   },
   {
     "referrer": "jira.devtools.intel.com",
