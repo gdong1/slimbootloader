@@ -1,32 +1,32 @@
 [
   {
     "referrer": "github.com",
-    "count": 404,
-    "uniques": 69
+    "count": 413,
+    "uniques": 67
   },
   {
     "referrer": "Google",
-    "count": 184,
-    "uniques": 55
+    "count": 227,
+    "uniques": 59
   },
   {
     "referrer": "groups.io",
-    "count": 26,
-    "uniques": 14
+    "count": 23,
+    "uniques": 13
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 18,
-    "uniques": 8
+    "count": 20,
+    "uniques": 9
+  },
+  {
+    "referrer": "Bing",
+    "count": 16,
+    "uniques": 10
   },
   {
     "referrer": "DuckDuckGo",
     "count": 15,
-    "uniques": 6
-  },
-  {
-    "referrer": "Bing",
-    "count": 11,
     "uniques": 6
   },
   {
@@ -35,17 +35,17 @@
     "uniques": 6
   },
   {
-    "referrer": "blog.csdn.net",
-    "count": 2,
-    "uniques": 2
-  },
-  {
     "referrer": "yandex.ru",
     "count": 2,
     "uniques": 2
   },
   {
     "referrer": "drive2.ru",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "referrer": "ya.ru",
     "count": 2,
     "uniques": 1
   }
