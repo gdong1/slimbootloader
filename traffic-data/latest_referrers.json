@@ -1,13 +1,13 @@
 [
   {
     "referrer": "github.com",
-    "count": 407,
-    "uniques": 64
+    "count": 494,
+    "uniques": 62
   },
   {
     "referrer": "Google",
-    "count": 356,
-    "uniques": 62
+    "count": 334,
+    "uniques": 61
   },
   {
     "referrer": "slimbootloader.github.io",
@@ -16,18 +16,18 @@
   },
   {
     "referrer": "groups.io",
-    "count": 22,
-    "uniques": 13
+    "count": 27,
+    "uniques": 15
   },
   {
     "referrer": "Bing",
-    "count": 18,
-    "uniques": 11
+    "count": 21,
+    "uniques": 14
   },
   {
     "referrer": "DuckDuckGo",
-    "count": 15,
-    "uniques": 6
+    "count": 13,
+    "uniques": 4
   },
   {
     "referrer": "basicinputoutput.com",
@@ -36,8 +36,8 @@
   },
   {
     "referrer": "yandex.ru",
-    "count": 2,
-    "uniques": 2
+    "count": 3,
+    "uniques": 3
   },
   {
     "referrer": "drive2.ru",
