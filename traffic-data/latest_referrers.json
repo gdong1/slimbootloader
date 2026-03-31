@@ -1,17 +1,17 @@
 [
   {
     "referrer": "github.com",
-    "count": 535,
+    "count": 524,
     "uniques": 62
   },
   {
     "referrer": "Google",
-    "count": 420,
-    "uniques": 70
+    "count": 414,
+    "uniques": 66
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 70,
+    "count": 72,
     "uniques": 14
   },
   {
@@ -35,11 +35,6 @@
     "uniques": 4
   },
   {
-    "referrer": "basicinputoutput.com",
-    "count": 4,
-    "uniques": 4
-  },
-  {
     "referrer": "jira.devtools.intel.com",
     "count": 3,
     "uniques": 3
@@ -48,5 +43,10 @@
     "referrer": "yandex.ru",
     "count": 3,
     "uniques": 2
+  },
+  {
+    "referrer": "wiki.infotecs.int",
+    "count": 3,
+    "uniques": 1
   }
 ]
