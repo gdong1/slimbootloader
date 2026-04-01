@@ -2,38 +2,38 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "slimbootloader/slimbootloader: Visit http://slimbootloader.github.io for docu...",
-    "count": 413,
-    "uniques": 168
+    "count": 409,
+    "uniques": 162
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "Pull requests · slimbootloader/slimbootloader",
-    "count": 325,
-    "uniques": 26
+    "count": 332,
+    "uniques": 27
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "Commits · slimbootloader/slimbootloader",
-    "count": 124,
+    "count": 125,
     "uniques": 18
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "slimbootloader/slimbootloader: Visit http://slimbootloader.github.io for docu...",
-    "count": 100,
-    "uniques": 22
+    "count": 102,
+    "uniques": 23
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
+    "title": "GitHub - slimbootloader/slimbootloader: Visit http://slimbootloader.github.io...",
+    "count": 62,
+    "uniques": 35
   },
   {
     "path": "/slimbootloader/slimbootloader/issues",
     "title": "GitHub · Where software is built",
     "count": 61,
-    "uniques": 18
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
-    "title": "GitHub - slimbootloader/slimbootloader: Visit http://slimbootloader.github.io...",
-    "count": 60,
-    "uniques": 34
+    "uniques": 16
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2658",
@@ -44,7 +44,7 @@
   {
     "path": "/slimbootloader/slimbootloader/pull/2644",
     "title": "Merge Arl Pcie helper libs into common lib by tsaikevin · Pull Request #2644 ...",
-    "count": 44,
+    "count": 41,
     "uniques": 6
   },
   {
