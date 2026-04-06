@@ -2,19 +2,19 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 402,
-    "uniques": 150
+    "count": 406,
+    "uniques": 153
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 293,
+    "count": 276,
     "uniques": 25
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 146,
+    "count": 147,
     "uniques": 18
   },
   {
