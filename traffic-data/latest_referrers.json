@@ -1,22 +1,22 @@
 [
   {
     "referrer": "github.com",
-    "count": 792,
+    "count": 713,
     "uniques": 71
   },
   {
     "referrer": "Google",
-    "count": 299,
-    "uniques": 58
+    "count": 302,
+    "uniques": 61
   },
   {
     "referrer": "Bing",
-    "count": 61,
+    "count": 60,
     "uniques": 17
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 36,
+    "count": 35,
     "uniques": 10
   },
   {
@@ -26,8 +26,8 @@
   },
   {
     "referrer": "groups.io",
-    "count": 16,
-    "uniques": 10
+    "count": 9,
+    "uniques": 8
   },
   {
     "referrer": "intel.lightning.force.com",
