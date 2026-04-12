@@ -3,31 +3,31 @@
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
     "count": 361,
-    "uniques": 158
+    "uniques": 162
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 204,
-    "uniques": 25
+    "count": 181,
+    "uniques": 23
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 93,
-    "uniques": 20
+    "count": 94,
+    "uniques": 21
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 63,
-    "uniques": 17
+    "count": 74,
+    "uniques": 20
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 56,
-    "uniques": 33
+    "count": 69,
+    "uniques": 35
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2665",
@@ -38,25 +38,25 @@
   {
     "path": "/slimbootloader/slimbootloader/pull/2669",
     "title": "/pull/2669",
-    "count": 34,
-    "uniques": 10
+    "count": 37,
+    "uniques": 11
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/Platform/ArrowlakeBoardPkg",
+    "title": "/tree/master/Platform/ArrowlakeBoardPkg",
+    "count": 35,
+    "uniques": 3
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/PayloadPkg/OsLoader",
     "title": "/tree/master/PayloadPkg/OsLoader",
-    "count": 31,
-    "uniques": 4
+    "count": 33,
+    "uniques": 5
   },
   {
-    "path": "/slimbootloader/slimbootloader/issues",
-    "title": "/issues",
-    "count": 29,
-    "uniques": 12
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2662",
-    "title": "/pull/2662",
-    "count": 29,
-    "uniques": 11
+    "path": "/slimbootloader/slimbootloader/tree/master/Silicon",
+    "title": "/tree/master/Silicon",
+    "count": 30,
+    "uniques": 20
   }
 ]
