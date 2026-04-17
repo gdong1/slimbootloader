@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 366,
-    "uniques": 155
+    "count": 346,
+    "uniques": 154
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 179,
+    "count": 162,
     "uniques": 21
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
-    "title": "/tree/master/Platform",
-    "count": 102,
-    "uniques": 41
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 101,
+    "count": 95,
     "uniques": 24
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
+    "title": "/tree/master/Platform",
+    "count": 89,
+    "uniques": 36
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 78,
-    "uniques": 17
+    "count": 69,
+    "uniques": 15
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2669",
     "title": "/pull/2669",
-    "count": 41,
+    "count": 42,
     "uniques": 11
   },
   {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform/ArrowlakeBoardPkg",
-    "title": "/tree/master/Platform/ArrowlakeBoardPkg",
-    "count": 38,
-    "uniques": 5
+    "path": "/slimbootloader/slimbootloader/tree/master/PayloadPkg/OsLoader",
+    "title": "/tree/master/PayloadPkg/OsLoader",
+    "count": 39,
+    "uniques": 9
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/BootloaderCorePkg",
+    "title": "/tree/master/BootloaderCorePkg",
+    "count": 36,
+    "uniques": 14
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Silicon",
     "title": "/tree/master/Silicon",
-    "count": 37,
-    "uniques": 23
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2665",
-    "title": "/pull/2665",
-    "count": 36,
-    "uniques": 10
+    "count": 35,
+    "uniques": 22
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2662",
     "title": "/pull/2662",
-    "count": 36,
-    "uniques": 9
+    "count": 34,
+    "uniques": 8
   }
 ]
