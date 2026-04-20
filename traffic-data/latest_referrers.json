@@ -1,12 +1,12 @@
 [
   {
     "referrer": "github.com",
-    "count": 607,
-    "uniques": 70
+    "count": 606,
+    "uniques": 69
   },
   {
     "referrer": "Google",
-    "count": 241,
+    "count": 225,
     "uniques": 54
   },
   {
@@ -17,7 +17,7 @@
   {
     "referrer": "Bing",
     "count": 37,
-    "uniques": 11
+    "uniques": 10
   },
   {
     "referrer": "groups.io",
