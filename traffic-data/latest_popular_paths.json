@@ -2,56 +2,56 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 359,
-    "uniques": 151
+    "count": 360,
+    "uniques": 152
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 205,
+    "count": 212,
     "uniques": 21
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 102,
-    "uniques": 26
+    "count": 104,
+    "uniques": 27
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
     "count": 99,
-    "uniques": 44
+    "uniques": 45
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 69,
+    "count": 68,
     "uniques": 19
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2680",
     "title": "/pull/2680",
-    "count": 53,
+    "count": 55,
     "uniques": 7
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2681",
     "title": "/pull/2681",
-    "count": 44,
+    "count": 45,
     "uniques": 5
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/BootloaderCorePkg",
     "title": "/tree/master/BootloaderCorePkg",
-    "count": 39,
+    "count": 36,
     "uniques": 15
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/PayloadPkg/OsLoader",
     "title": "/tree/master/PayloadPkg/OsLoader",
-    "count": 35,
-    "uniques": 9
+    "count": 36,
+    "uniques": 10
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2662",
