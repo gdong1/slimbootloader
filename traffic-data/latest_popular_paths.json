@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 360,
-    "uniques": 152
+    "count": 382,
+    "uniques": 157
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 212,
-    "uniques": 21
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master",
-    "title": "/tree/master",
-    "count": 104,
-    "uniques": 27
+    "count": 249,
+    "uniques": 22
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 99,
-    "uniques": 45
+    "count": 136,
+    "uniques": 48
   },
   {
-    "path": "/slimbootloader/slimbootloader/commits/master",
-    "title": "/commits/master",
-    "count": 68,
-    "uniques": 19
+    "path": "/slimbootloader/slimbootloader/tree/master",
+    "title": "/tree/master",
+    "count": 116,
+    "uniques": 33
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2680",
     "title": "/pull/2680",
-    "count": 55,
-    "uniques": 7
+    "count": 74,
+    "uniques": 9
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/commits/master",
+    "title": "/commits/master",
+    "count": 71,
+    "uniques": 19
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2681",
     "title": "/pull/2681",
-    "count": 45,
+    "count": 53,
     "uniques": 5
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/BootloaderCorePkg",
     "title": "/tree/master/BootloaderCorePkg",
-    "count": 36,
-    "uniques": 15
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master/PayloadPkg/OsLoader",
-    "title": "/tree/master/PayloadPkg/OsLoader",
-    "count": 36,
-    "uniques": 10
+    "count": 41,
+    "uniques": 18
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2662",
     "title": "/pull/2662",
-    "count": 35,
+    "count": 39,
     "uniques": 7
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/PayloadPkg/OsLoader",
+    "title": "/tree/master/PayloadPkg/OsLoader",
+    "count": 38,
+    "uniques": 12
   }
 ]
