@@ -2,26 +2,32 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 379,
-    "uniques": 147
+    "count": 356,
+    "uniques": 144
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 307,
-    "uniques": 23
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
-    "title": "/tree/master/Platform",
-    "count": 127,
-    "uniques": 48
+    "count": 315,
+    "uniques": 21
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 121,
-    "uniques": 22
+    "count": 126,
+    "uniques": 21
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
+    "title": "/tree/master/Platform",
+    "count": 118,
+    "uniques": 47
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master",
+    "title": "/tree/master",
+    "count": 112,
+    "uniques": 30
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2680",
@@ -30,33 +36,27 @@
     "uniques": 13
   },
   {
-    "path": "/slimbootloader/slimbootloader/tree/master",
-    "title": "/tree/master",
-    "count": 103,
-    "uniques": 31
-  },
-  {
     "path": "/slimbootloader/slimbootloader/pull/2681",
     "title": "/pull/2681",
-    "count": 62,
+    "count": 67,
     "uniques": 5
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2687",
+    "title": "/pull/2687",
+    "count": 64,
+    "uniques": 18
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/BootloaderCorePkg",
     "title": "/tree/master/BootloaderCorePkg",
-    "count": 54,
-    "uniques": 22
+    "count": 45,
+    "uniques": 17
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2672",
     "title": "/pull/2672",
-    "count": 51,
-    "uniques": 14
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/blob/master/BootloaderCorePkg/Stage2/Stage2.c",
-    "title": "/blob/master/BootloaderCorePkg/Stage2/Stage2.c",
-    "count": 43,
-    "uniques": 15
+    "count": 40,
+    "uniques": 10
   }
 ]
