@@ -1,23 +1,23 @@
 [
   {
     "referrer": "github.com",
-    "count": 481,
-    "uniques": 71
+    "count": 435,
+    "uniques": 69
   },
   {
     "referrer": "Google",
-    "count": 347,
-    "uniques": 50
+    "count": 355,
+    "uniques": 47
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 59,
+    "count": 57,
     "uniques": 16
   },
   {
     "referrer": "Bing",
-    "count": 40,
-    "uniques": 15
+    "count": 43,
+    "uniques": 17
   },
   {
     "referrer": "statics.teams.cdn.office.net",
@@ -26,12 +26,12 @@
   },
   {
     "referrer": "groups.io",
-    "count": 20,
-    "uniques": 12
+    "count": 18,
+    "uniques": 11
   },
   {
     "referrer": "wiki.ith.intel.com",
-    "count": 10,
+    "count": 9,
     "uniques": 2
   },
   {
@@ -40,7 +40,7 @@
     "uniques": 4
   },
   {
-    "referrer": "intel.com",
+    "referrer": "chatgpt.com",
     "count": 4,
     "uniques": 1
   },
