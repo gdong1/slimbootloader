@@ -143,7 +143,9 @@ LzmaUefiDecompressGetInfo (
 {
   UInt64  DecodedSize;
 
-  ASSERT(SourceSize >= LZMA_HEADER_SIZE);
+  if (Source == NULL || SourceSize < LZMA_HEADER_SIZE) {
+    return RETURN_INVALID_PARAMETER;
+  }
 
   DecodedSize = GetDecodedSizeOfBuf((UINT8*)Source);
   if (DecodedSize > MAX_UINT32) {

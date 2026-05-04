@@ -93,9 +93,83 @@ GetContainerHeaderSize (
 }
 
 /**
+  Validate the structural integrity of a container.
+
+  Walks the component entry table and validates that all offsets and sizes
+  stay within the declared container bounds. This is a one-time check done
+  at registration time. Once validated, internal traversal can trust the
+  structure without per-access bounds checks.
+
+  @param[in] ContainerHdr   Pointer to the container header.
+  @param[in] ContainerSize  Total container size in bytes (header + data).
+
+  @retval EFI_SUCCESS            Structure is valid.
+  @retval EFI_COMPROMISED_DATA   Structure is malformed or out of bounds.
+
+**/
+STATIC
+EFI_STATUS
+ValidateContainerStructure (
+  IN  CONTAINER_HDR  *ContainerHdr,
+  IN  UINT32          ContainerSize
+  )
+{
+  UINT32           Index;
+  UINT32           CurrOffset;
+  UINT32           DataSize;
+  COMPONENT_ENTRY *Entry;
+
+  if (ContainerSize < sizeof (CONTAINER_HDR)) {
+    return EFI_COMPROMISED_DATA;
+  }
+
+  if (ContainerHdr->DataOffset < sizeof (CONTAINER_HDR)) {
+    return EFI_COMPROMISED_DATA;
+  }
+
+  if (ContainerHdr->DataOffset > ContainerSize) {
+    return EFI_COMPROMISED_DATA;
+  }
+
+  if (ContainerHdr->Count > MAX_CONTAINER_SUB_IMAGE) {
+    return EFI_COMPROMISED_DATA;
+  }
+
+  DataSize = ContainerSize - ContainerHdr->DataOffset;
+  if (ContainerHdr->DataSize > DataSize) {
+    return EFI_COMPROMISED_DATA;
+  }
+
+  // Walk all component entries and validate bounds
+  CurrOffset = sizeof (CONTAINER_HDR);
+  for (Index = 0; Index < ContainerHdr->Count; Index++) {
+    // Verify the fixed entry header fits
+    if (CurrOffset + sizeof (COMPONENT_ENTRY) > ContainerHdr->DataOffset) {
+      return EFI_COMPROMISED_DATA;
+    }
+    Entry = (COMPONENT_ENTRY *)((UINT8 *)ContainerHdr + CurrOffset);
+
+    // Verify hash data fits within header area
+    if (CurrOffset + sizeof (COMPONENT_ENTRY) + Entry->HashSize > ContainerHdr->DataOffset) {
+      return EFI_COMPROMISED_DATA;
+    }
+
+    // Verify component data region fits within data area
+    if ((UINT64)Entry->Offset + Entry->Size > DataSize) {
+      return EFI_COMPROMISED_DATA;
+    }
+
+    CurrOffset += sizeof (COMPONENT_ENTRY) + Entry->HashSize;
+  }
+
+  return EFI_SUCCESS;
+}
+
+/**
   This function registers a container.
 
   @param[in]  ContainerBase      Container base address to register.
+  @param[in]  ContainerSize      Container size in bytes, 0 if unknown.
 
   @retval EFI_NOT_READY          Not ready for register yet.
   @retval EFI_BUFFER_TOO_SMALL   Insufficant max container entry number.
@@ -107,7 +181,8 @@ GetContainerHeaderSize (
 STATIC
 EFI_STATUS
 RegisterContainerInternal (
-  IN UINT32    ContainerBase
+  IN UINT32    ContainerBase,
+  IN UINT32    ContainerSize
   )
 {
   CONTAINER_LIST       *ContainerList;
@@ -116,6 +191,7 @@ RegisterContainerInternal (
   UINT32                Index;
   VOID                 *Buffer;
   UINT32                MaxHdrSize;
+  EFI_STATUS            Status;
 
   ContainerList = (CONTAINER_LIST *)GetContainerListPtr ();
   if (ContainerList == NULL) {
@@ -126,6 +202,15 @@ RegisterContainerInternal (
   ContainerEntry = GetContainerBySignature (ContainerHdr->Signature);
   if (ContainerEntry != NULL) {
     return EFI_UNSUPPORTED;
+  }
+
+  // Validate container structure before trusting any fields
+  if (ContainerSize > 0) {
+    Status = ValidateContainerStructure (ContainerHdr, ContainerSize);
+    if (EFI_ERROR (Status)) {
+      DEBUG ((DEBUG_ERROR, "Container structure validation failed!\n"));
+      return Status;
+    }
   }
 
   Index = ContainerList->Count;
@@ -475,6 +560,7 @@ AutheticateContainerInternal (
   This function registers a container.
 
   @param[in]  ContainerBase      Container base address to register.
+  @param[in]  ContainerSize      Container size in bytes, 0 if unknown.
   @param[in]  ContainerCallback  Callback regsiterd to notify container buf info
 
   @retval EFI_NOT_READY          Not ready for register yet.
@@ -486,6 +572,7 @@ AutheticateContainerInternal (
 EFI_STATUS
 RegisterContainer (
   IN  UINT32                    ContainerBase,
+  IN  UINT32                    ContainerSize,
   IN  LOAD_COMPONENT_CALLBACK   ContainerCallback
   )
 {
@@ -498,7 +585,7 @@ RegisterContainer (
   DEBUG ((DEBUG_INFO, "Registering container %4a\n", (CHAR8 *)&SignatureBuffer));
 
   // Register container
-  Status = RegisterContainerInternal (ContainerBase);
+  Status = RegisterContainerInternal (ContainerBase, ContainerSize);
   if (!EFI_ERROR (Status)) {
     Status = AutheticateContainerInternal (ContainerHdr, ContainerCallback);
     if (EFI_ERROR (Status)) {
@@ -555,7 +642,7 @@ LocateComponentEntry (
     }
 
     // Register container temporarily
-    Status = RegisterContainer (ContainerBase, NULL);
+    Status = RegisterContainer (ContainerBase, ContainerSize, NULL);
     if (EFI_ERROR (Status)) {
       return EFI_UNSUPPORTED;
     }

@@ -75,6 +75,10 @@ Lz4DecompressGetInfo (
   OUT UINT32      *ScratchSize
   )
 {
+  if (Source == NULL || SourceSize < sizeof (UINT32)) {
+    return RETURN_INVALID_PARAMETER;
+  }
+
   if (DestinationSize) {
     *DestinationSize = * (UINT32 *)Source;
   }
