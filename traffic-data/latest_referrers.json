@@ -6,13 +6,13 @@
   },
   {
     "referrer": "Google",
-    "count": 345,
-    "uniques": 44
+    "count": 342,
+    "uniques": 46
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 74,
-    "uniques": 17
+    "count": 59,
+    "uniques": 15
   },
   {
     "referrer": "Bing",
@@ -35,14 +35,14 @@
     "uniques": 2
   },
   {
-    "referrer": "yandex.ru",
-    "count": 5,
-    "uniques": 4
-  },
-  {
     "referrer": "chatgpt.com",
     "count": 4,
     "uniques": 1
+  },
+  {
+    "referrer": "yandex.ru",
+    "count": 3,
+    "uniques": 2
   },
   {
     "referrer": "search.brave.com",
