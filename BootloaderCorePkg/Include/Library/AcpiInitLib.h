@@ -22,24 +22,6 @@ typedef struct {
   UINT64                                          SblPerfTablePointer;
 } SBL_PERFORMANCE_TABLE_POINTER_RECORD;
 
-typedef struct {
-  EFI_ACPI_5_0_FPDT_PERFORMANCE_RECORD_HEADER     Header;
-  UINT32                                          Reserved;
-  ///
-  /// Time taken for Stage 1 execution in nanoseconds
-  ///
-  UINT64                                          Stage1Time;
-  ///
-  /// Time taken for Stage 2 execution in nanoseconds
-  ///
-  UINT64                                          Stage2Time;
-  ///
-  /// Time taken for OsLoader execution in nanoseconds
-  ///
-  UINT64                                          OsLoaderTime;
-
-} SBL_PERFORMANCE_RECORD;
-
 #pragma pack(1)
 ///
 /// Firmware Performance Data Table.
@@ -75,15 +57,32 @@ typedef struct {
 
 ///
 /// SBL Performance Data Table.
-/// This structure contains SBL performance records like Stage1 done time,
-/// Stage2 done time, OsLoader done time
+/// This structure contains all SBL performance timestamps.
+/// Each TimeStamp entry encodes a 16-bit ID in bits [63:48]
+/// and a 48-bit TSC value in bits [47:0].
+///
 #define SBL_PERFORMANCE_TABLE_SIGNATURE       SIGNATURE_32('S', 'B', 'L', 'T')
 #define SBL_PERFORMACE_TABLE_TYPE             0x3000
 #define SBL_PERFORMACE_TABLE_REVISION         0x01
 typedef struct {
   EFI_ACPI_5_0_FPDT_PERFORMANCE_TABLE_HEADER  Header;         ///< Common ACPI table header.
-  SBL_PERFORMANCE_RECORD                      SblPerfRecord;  ///< SBL performance record.
+  UINT16                                      Count;          ///< Number of valid timestamp entries.
+  UINT16                                      Flags;          ///< Reserved flags.
+  UINT32                                      Frequency;      ///< TSC frequency in KHz.
+  UINT64                                      TimeStamp[0];   ///< Performance timestamps (variable length).
 } SBL_PERFORMANCE_TABLE;
+
+///
+/// Combined FPDT layout including fixed sub-tables.
+/// This is used to reserve contiguous space in ACPI NVS for FPDT, FBPT, and S3PT.
+/// The SBL Performance Table (SBLT) follows immediately after and is dynamically sized.
+/// The FPDT Header.Length only covers the FIRMWARE_PERFORMANCE_TABLE portion per ACPI spec.
+///
+typedef struct {
+  FIRMWARE_PERFORMANCE_TABLE  Fpdt;
+  BOOT_PERFORMANCE_TABLE      Boot;
+  S3_PERFORMANCE_TABLE        S3;
+} FIRMWARE_PERFORMANCE_TABLES;
 
 #pragma pack()
 
