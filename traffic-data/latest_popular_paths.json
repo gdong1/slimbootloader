@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 269,
-    "uniques": 123
+    "count": 270,
+    "uniques": 125
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 258,
+    "count": 262,
     "uniques": 23
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 136,
-    "uniques": 14
+    "count": 139,
+    "uniques": 16
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 84,
-    "uniques": 24
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2687",
-    "title": "/pull/2687",
-    "count": 82,
-    "uniques": 20
+    "count": 78,
+    "uniques": 23
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 76,
-    "uniques": 36
+    "count": 75,
+    "uniques": 37
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2686",
-    "title": "/pull/2686",
-    "count": 39,
-    "uniques": 15
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2687/changes",
-    "title": "/pull/2687/changes",
-    "count": 34,
-    "uniques": 7
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/issues",
-    "title": "/issues",
-    "count": 33,
-    "uniques": 4
+    "path": "/slimbootloader/slimbootloader/pull/2687",
+    "title": "/pull/2687",
+    "count": 71,
+    "uniques": 20
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2690",
     "title": "/pull/2690",
+    "count": 37,
+    "uniques": 7
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2686",
+    "title": "/pull/2686",
     "count": 32,
+    "uniques": 15
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/issues",
+    "title": "/issues",
+    "count": 31,
     "uniques": 6
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2681",
+    "title": "/pull/2681",
+    "count": 31,
+    "uniques": 3
   }
 ]
