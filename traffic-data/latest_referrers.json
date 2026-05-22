@@ -1,13 +1,18 @@
 [
   {
     "referrer": "github.com",
-    "count": 319,
-    "uniques": 60
+    "count": 320,
+    "uniques": 64
   },
   {
     "referrer": "Google",
-    "count": 276,
-    "uniques": 61
+    "count": 286,
+    "uniques": 65
+  },
+  {
+    "referrer": "intel.com",
+    "count": 28,
+    "uniques": 18
   },
   {
     "referrer": "yandex.ru",
@@ -15,13 +20,8 @@
     "uniques": 6
   },
   {
-    "referrer": "intel.com",
-    "count": 22,
-    "uniques": 16
-  },
-  {
     "referrer": "Bing",
-    "count": 21,
+    "count": 20,
     "uniques": 13
   },
   {
@@ -30,23 +30,23 @@
     "uniques": 5
   },
   {
-    "referrer": "groups.io",
-    "count": 8,
-    "uniques": 6
-  },
-  {
     "referrer": "wiki.ith.intel.com",
     "count": 8,
     "uniques": 4
   },
   {
-    "referrer": "statics.teams.cdn.office.net",
+    "referrer": "groups.io",
     "count": 7,
-    "uniques": 2
+    "uniques": 5
   },
   {
     "referrer": "Yahoo",
     "count": 7,
+    "uniques": 1
+  },
+  {
+    "referrer": "doubao.com",
+    "count": 6,
     "uniques": 1
   }
 ]
