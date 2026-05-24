@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 299,
-    "uniques": 148
+    "count": 290,
+    "uniques": 143
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 252,
-    "uniques": 27
+    "count": 280,
+    "uniques": 28
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 127,
-    "uniques": 28
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master",
-    "title": "/tree/master",
-    "count": 84,
-    "uniques": 15
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2690",
-    "title": "/pull/2690",
-    "count": 79,
-    "uniques": 15
+    "count": 119,
+    "uniques": 27
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2695",
     "title": "/pull/2695",
-    "count": 77,
+    "count": 84,
     "uniques": 20
   },
   {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
-    "title": "/tree/master/Platform",
-    "count": 43,
-    "uniques": 30
+    "path": "/slimbootloader/slimbootloader/tree/master",
+    "title": "/tree/master",
+    "count": 78,
+    "uniques": 16
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2690",
+    "title": "/pull/2690",
+    "count": 74,
+    "uniques": 15
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2662",
     "title": "/pull/2662",
-    "count": 43,
+    "count": 44,
+    "uniques": 4
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/commit/193129e6a1ea675527670785c8c75ed09b423211",
+    "title": "/commit/193129e6a1ea675527670785c8c75ed09b423211",
+    "count": 42,
+    "uniques": 35
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2702",
+    "title": "/pull/2702",
+    "count": 42,
     "uniques": 4
   },
   {
     "path": "/slimbootloader/slimbootloader/commits",
     "title": "/commits",
-    "count": 41,
-    "uniques": 3
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/commit/193129e6a1ea675527670785c8c75ed09b423211",
-    "title": "/commit/193129e6a1ea675527670785c8c75ed09b423211",
-    "count": 33,
-    "uniques": 29
+    "count": 40,
+    "uniques": 2
   }
 ]

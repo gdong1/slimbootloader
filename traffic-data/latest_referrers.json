@@ -1,32 +1,32 @@
 [
   {
     "referrer": "Google",
-    "count": 292,
-    "uniques": 69
+    "count": 281,
+    "uniques": 61
   },
   {
     "referrer": "github.com",
-    "count": 284,
-    "uniques": 66
+    "count": 209,
+    "uniques": 62
   },
   {
     "referrer": "intel.com",
-    "count": 33,
-    "uniques": 19
+    "count": 38,
+    "uniques": 22
   },
   {
     "referrer": "Bing",
-    "count": 28,
-    "uniques": 13
+    "count": 24,
+    "uniques": 10
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 14,
-    "uniques": 5
+    "count": 16,
+    "uniques": 6
   },
   {
     "referrer": "yandex.ru",
-    "count": 11,
+    "count": 10,
     "uniques": 5
   },
   {
