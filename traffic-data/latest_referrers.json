@@ -1,23 +1,23 @@
 [
   {
     "referrer": "Google",
-    "count": 281,
-    "uniques": 61
+    "count": 268,
+    "uniques": 58
   },
   {
     "referrer": "github.com",
-    "count": 209,
-    "uniques": 62
+    "count": 207,
+    "uniques": 61
   },
   {
     "referrer": "intel.com",
-    "count": 38,
-    "uniques": 22
+    "count": 40,
+    "uniques": 23
   },
   {
     "referrer": "Bing",
-    "count": 24,
-    "uniques": 10
+    "count": 25,
+    "uniques": 11
   },
   {
     "referrer": "slimbootloader.github.io",
@@ -28,11 +28,6 @@
     "referrer": "yandex.ru",
     "count": 10,
     "uniques": 5
-  },
-  {
-    "referrer": "wiki.ith.intel.com",
-    "count": 8,
-    "uniques": 4
   },
   {
     "referrer": "groups.io",
@@ -48,5 +43,10 @@
     "referrer": "doubao.com",
     "count": 7,
     "uniques": 1
+  },
+  {
+    "referrer": "wiki.ith.intel.com",
+    "count": 3,
+    "uniques": 3
   }
 ]
