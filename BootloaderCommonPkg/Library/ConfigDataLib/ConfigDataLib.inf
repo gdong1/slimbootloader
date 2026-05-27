@@ -32,6 +32,7 @@
   DebugLib
   BaseMemoryLib
   BootloaderCommonLib
+  VariableLib
 
 [Guids]
 

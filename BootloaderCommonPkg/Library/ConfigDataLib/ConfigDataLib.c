@@ -9,6 +9,8 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/BootloaderCommonLib.h>
 #include <Library/ConfigDataLib.h>
 #include <Library/BaseMemoryLib.h>
+#include <Library/PcdLib.h>
+#include <Library/VariableLib.h>
 
 //
 // FSP UPD delta entry layout. Must stay in sync with
@@ -19,7 +21,56 @@ typedef struct {
   UINT16  Offset;
   UINT8   Length;
 } FSPUPD_DELTA_ENTRY;
+
+typedef struct {
+  UINT16  TagId;
+  UINT16  BitOffset;
+  UINT16  BitLength;
+  UINT16  Reserved;
+  UINT32  Value;
+} UI_CFG_DELTA_ENTRY;
+
+typedef struct {
+  UINT32             Signature;
+  UINT8              Version;
+  UINT8              EntryCount;
+  UINT16             Reserved;
+  UI_CFG_DELTA_ENTRY Entries[0];
+} UI_CFG_DELTA_HDR;
 #pragma pack()
+
+#define UI_CFG_DELTA_SIGNATURE   SIGNATURE_32('C','D','L','T')
+#define UI_CFG_DELTA_VERSION     1
+#define UI_CFG_DELTA_MAX_ENTRIES 50
+#define UI_CFG_DELTA_VAR_NAME    L"CfgDelta"
+
+STATIC EFI_GUID  mUiSetupVarGuid = {
+  0x7A3E4B2D, 0x1F8C, 0x4A9E, {0xB0, 0x12, 0x5C, 0x8D, 0xAA, 0xE1, 0x34, 0x56}
+};
+
+STATIC
+VOID
+WriteConfigBits (
+  IN UINT8   *Data,
+  IN UINT16   BitOffset,
+  IN UINT16   BitLength,
+  IN UINT32   Value
+  )
+{
+  UINT32  ByteOff;
+  UINT32  BitOff;
+  UINT32  Idx;
+
+  for (Idx = 0; Idx < BitLength && Idx < 32; Idx++) {
+    ByteOff = (BitOffset + Idx) / 8;
+    BitOff  = (BitOffset + Idx) % 8;
+    if (Value & (1 << Idx)) {
+      Data[ByteOff] |= (UINT8)(1 << BitOff);
+    } else {
+      Data[ByteOff] &= (UINT8)~(1 << BitOff);
+    }
+  }
+}
 
 /**
   Find configuration data header by its tag and platform ID.
@@ -154,6 +205,77 @@ FindConfigDataByTag (
   }
 
   return Cdata;
+}
+
+/**
+  Apply UiSetup CfgDelta variable entries for an FSP UPD base tag directly to
+  a caller-provided live UPD buffer.
+**/
+VOID
+EFIAPI
+ApplyCfgDeltaToFspUpd (
+  IN      UINT32  BaseTag,
+  IN OUT  VOID    *UpdPtr,
+  IN      UINT32  UpdSize
+  )
+{
+#if FixedPcdGet8 (PcdUiSetupEnabled)
+  EFI_STATUS          Status;
+  UINT8               DeltaBuf[8 + UI_CFG_DELTA_MAX_ENTRIES * sizeof (UI_CFG_DELTA_ENTRY)];
+  UINTN               DataSize;
+  UI_CFG_DELTA_HDR   *DeltaHdr;
+  UI_CFG_DELTA_ENTRY *Entry;
+  UINT8               Idx;
+  UINT32              Applied;
+
+  if (UpdPtr == NULL) {
+    return;
+  }
+
+  DataSize = sizeof (DeltaBuf);
+  Status = GetVariable (UI_CFG_DELTA_VAR_NAME, &mUiSetupVarGuid, NULL, &DataSize, DeltaBuf);
+  if (EFI_ERROR (Status)) {
+    return;
+  }
+
+  DeltaHdr = (UI_CFG_DELTA_HDR *)DeltaBuf;
+  if (DataSize < sizeof (UI_CFG_DELTA_HDR)) {
+    return;
+  }
+
+  if ((DeltaHdr->Signature != UI_CFG_DELTA_SIGNATURE) ||
+      (DeltaHdr->Version   != UI_CFG_DELTA_VERSION)) {
+    return;
+  }
+
+  if ((DeltaHdr->EntryCount > UI_CFG_DELTA_MAX_ENTRIES) ||
+      (DataSize < (sizeof (UI_CFG_DELTA_HDR) + DeltaHdr->EntryCount * sizeof (UI_CFG_DELTA_ENTRY)))) {
+    return;
+  }
+
+  Applied = 0;
+  for (Idx = 0; Idx < DeltaHdr->EntryCount && Idx < UI_CFG_DELTA_MAX_ENTRIES; Idx++) {
+    Entry = &DeltaHdr->Entries[Idx];
+
+    if (Entry->TagId != BaseTag) {
+      continue;
+    }
+
+    if ((((UINT32)Entry->BitOffset + Entry->BitLength) > (UpdSize * 8U)) ||
+        (Entry->BitLength == 0)) {
+      DEBUG ((DEBUG_WARN, "CfgDelta: Skip FSP tag 0x%03X entry out of bounds: bitOff=%u bitLen=%u updSize=0x%X\n",
+              BaseTag, Entry->BitOffset, Entry->BitLength, UpdSize));
+      continue;
+    }
+
+    WriteConfigBits ((UINT8 *)UpdPtr, Entry->BitOffset, Entry->BitLength, Entry->Value);
+    Applied++;
+  }
+
+  DEBUG ((DEBUG_INFO, "CfgDelta: Applied %d FSP entries from variable for tag 0x%03X\n", Applied, BaseTag));
+#endif
+
+  return;
 }
 
 /**

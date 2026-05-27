@@ -256,6 +256,27 @@ GetConfigDataSize (
   );
 
 /**
+  Apply UiSetup CfgDelta variable entries for an FSP UPD base tag directly to
+  a caller-provided live UPD buffer.
+
+  This is intended for FSP-M/FSP-S buffers that are not part of the CFGDATA
+  database. Matching entries are selected by Entry->TagId == BaseTag and then
+  patched into UpdPtr using the saved bit offset/length.
+
+  @param[in]      BaseTag    Base UiSetup tag ID for the FSP UPD region.
+  @param[in,out]  UpdPtr     Pointer to the live FSP UPD buffer to patch.
+  @param[in]      UpdSize    Size of the UPD buffer in bytes.
+
+**/
+VOID
+EFIAPI
+ApplyCfgDeltaToFspUpd (
+  IN      UINT32  BaseTag,
+  IN OUT  VOID    *UpdPtr,
+  IN      UINT32  UpdSize
+  );
+
+/**
   Apply FSP UPD delta entries from a per-board CFGDATA tag to an FSP UPD structure.
 
   Computes tag = BaseTag + GetPlatformId(), looks up the CFGDATA tag via

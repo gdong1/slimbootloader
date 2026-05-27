@@ -37,6 +37,7 @@
   BaseLib
   DebugLib
   BaseMemoryLib
+  ConfigDataLib
   ResetSystemLib
   ThunkLib
   PcdLib

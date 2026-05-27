@@ -88,6 +88,7 @@
   PartitionLib|BootloaderCommonPkg/Library/PartitionLib/PartitionLib.inf
   Ext23Lib|BootloaderCommonPkg/Library/Ext23Lib/Ext23Lib.inf
   ShellLib|BootloaderCommonPkg/Library/ShellLib/ShellLib.inf
+  UiSetupLib|PayloadPkg/Library/UiSetupLib/UiSetupLib.inf
   SpiBlockIoLib|BootloaderCommonPkg/Library/SpiBlockIoLib/SpiBlockIoLib.inf
   UfsBlockIoLib|BootloaderCommonPkg/Library/UfsBlockIoLib/UfsBlockIoLib.inf
   MmcAccessLib|BootloaderCommonPkg/Library/MmcAccessLib/MmcAccessLib.inf
@@ -274,6 +275,7 @@
   gPayloadTokenSpaceGuid.PcdRtcmRsvdSize                        | $(RTCM_RSVD_SIZE)
   gPayloadTokenSpaceGuid.PcdExtraImageSupportEnabled            | $(ENABLE_EXTRA_IMAGE_SUPPORT)
   gPayloadTokenSpaceGuid.PcdShellEnabled                        | $(ENABLE_SHELL)
+  gPayloadTokenSpaceGuid.PcdUiSetupEnabled                      | $(ENABLE_UI_SETUP)
 
   gPlatformCommonLibTokenSpaceGuid.PcdBootPerformanceMask       | $(BOOT_PERFORMANCE_MASK)
   gPlatformModuleTokenSpaceGuid.PcdSblResiliencyEnabled         | $(ENABLE_SBL_RESILIENCY)

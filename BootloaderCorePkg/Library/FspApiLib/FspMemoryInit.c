@@ -9,8 +9,11 @@
 #include <Library/FspApiLib.h>
 #include <Library/BoardInitLib.h>
 #include <Library/BootloaderCoreLib.h>
+#include <Library/ConfigDataLib.h>
 #include <Library/MemoryAllocationLib.h>
 #include <BootloaderCoreGlobal.h>
+
+#define CDATA_FSPM_UPD_TAG  0x500
 
 /**
   This FSP API is called after TempRamInit and initializes the memory.
@@ -94,6 +97,9 @@ CallFspMemoryInit (
   }
 
   UpdateFspConfig (FspmUpdPtr);
+#if FixedPcdGet8 (PcdUiSetupEnabled)
+  ApplyCfgDeltaToFspUpd (CDATA_FSPM_UPD_TAG, FspmUpdPtr, FspHeader->CfgRegionSize);
+#endif
 
   DEBUG ((DEBUG_INFO, "Dumping FSPM_UPD - Size: 0x%08X\n", FspHeader->CfgRegionSize));
   DumpHex (0, 0, FspHeader->CfgRegionSize, FspmUpdPtr);
