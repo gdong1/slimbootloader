@@ -16,6 +16,9 @@
   Include
 
 [LibraryClasses]
+  ## UiSetup interactive menu and shell config commands.
+  #  Real implementation: PayloadPkg/Library/UiSetupLib/UiSetupLib.inf
+  UiSetupLib|Include/Library/UiSetupLib.h
 
 [Guids]
   #
@@ -49,4 +52,5 @@
   gPayloadTokenSpaceGuid.PcdIoeCsmeUpdateEnabled     | 0x00000000 | UINT32 | 0x30001001
   gPayloadTokenSpaceGuid.PcdExtraImageSupportEnabled | 0x01       | UINT8  | 0x30001002
   gPayloadTokenSpaceGuid.PcdShellEnabled             | 0x01       | UINT8  | 0x30001003
+  gPayloadTokenSpaceGuid.PcdUiSetupEnabled           | 0x00       | UINT8  | 0x30001010
   gPayloadTokenSpaceGuid.PcdMaxCapsuleSize           | 0x10000000 | UINT32 | 0x30001004

@@ -54,7 +54,8 @@
   TimeStampLib | BootloaderCommonPkg/Library/TimeStampLib/TimeStampLib.inf
   LoaderPerformanceLib | BootloaderCommonPkg/Library/LoaderPerformanceLib/LoaderPerformanceLib.inf
   BootloaderCommonLib | BootloaderCommonPkg/Library/BootloaderCommonLib/BootloaderCommonLib.inf
-  UsbKbLib | BootloaderCommonPkg/Library/UsbKbLib/UsbKbLibNull.inf
+  UsbInitLib | BootloaderCommonPkg/Library/UsbInitLib/UsbInitLib.inf
+  UsbKbLib | BootloaderCommonPkg/Library/UsbKbLib/UsbKbLib.inf
   PayloadSupportLib | PayloadPkg/Library/PayloadSupportLib/PayloadSupportLib.inf
   DebugPrintErrorLevelLib | PayloadPkg/Library/DebugPrintErrorLevelLib/DebugPrintErrorLevelLib.inf
   BootloaderLib | PayloadPkg/Library/PayloadLib/PayloadLib.inf
