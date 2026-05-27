@@ -64,6 +64,7 @@
 #include <ConfigDataCommonDefs.h>
 #include <Register/Intel/ArchitecturalMsr.h>
 #include <Library/StringSupportLib.h>
+#include <Library/UiSetupLib.h>
 #include <PreOsHeader.h>
 
 

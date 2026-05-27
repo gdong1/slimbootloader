@@ -84,6 +84,7 @@
   SynchronizationLib
   MpServiceLib
   ConsoleInLib
+  UiSetupLib
 
 [Guids]
   gOsConfigDataGuid
@@ -118,6 +119,7 @@
   gPlatformCommonLibTokenSpaceGuid.PcdMultibootSupportEnabled
   gPlatformCommonLibTokenSpaceGuid.PcdMultiboot2SupportEnabled
   gPayloadTokenSpaceGuid.PcdShellEnabled
+  gPayloadTokenSpaceGuid.PcdUiSetupEnabled
 
 [Depex]
   TRUE

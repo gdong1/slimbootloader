@@ -1436,6 +1436,22 @@ RunShell (
 }
 
 /**
+  Run UI Setup.
+
+  This function will enter the UiSetup configuration screen if enabled.
+  Called from shell or triggered by hotkey detection.
+**/
+VOID
+RunUiSetupIfEnabled (
+  VOID
+  )
+{
+  LocalConsoleInit (TRUE);
+  RunUiSetup ();
+  LocalConsoleInit (FALSE);
+}
+
+/**
   Payload main entry.
 
   This function will continue Payload execution with a new memory based stack.
@@ -1490,6 +1506,11 @@ PayloadMain (
   if (BootShell) {
     RunShell (ShellTimeout);
   }
+
+#if (FixedPcdGet8 (PcdUiSetupEnabled))
+  RunUiSetupIfEnabled ();
+#endif
+
   AddMeasurePoint (0x4020);
 
   while (OsBootOptionList != NULL) {
