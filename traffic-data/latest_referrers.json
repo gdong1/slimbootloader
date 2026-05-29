@@ -1,18 +1,18 @@
 [
   {
     "referrer": "Google",
-    "count": 222,
-    "uniques": 52
+    "count": 218,
+    "uniques": 49
   },
   {
     "referrer": "github.com",
-    "count": 199,
-    "uniques": 58
+    "count": 177,
+    "uniques": 56
   },
   {
     "referrer": "intel.com",
-    "count": 46,
-    "uniques": 24
+    "count": 41,
+    "uniques": 21
   },
   {
     "referrer": "Bing",
@@ -20,8 +20,8 @@
     "uniques": 7
   },
   {
-    "referrer": "groups.io",
-    "count": 9,
+    "referrer": "slimbootloader.github.io",
+    "count": 10,
     "uniques": 7
   },
   {
@@ -30,14 +30,9 @@
     "uniques": 4
   },
   {
-    "referrer": "slimbootloader.github.io",
-    "count": 7,
-    "uniques": 4
-  },
-  {
-    "referrer": "Yahoo",
-    "count": 7,
-    "uniques": 1
+    "referrer": "groups.io",
+    "count": 8,
+    "uniques": 7
   },
   {
     "referrer": "doubao.com",
@@ -47,6 +42,11 @@
   {
     "referrer": "statics.teams.cdn.office.net",
     "count": 4,
+    "uniques": 3
+  },
+  {
+    "referrer": "basicinputoutput.com",
+    "count": 3,
     "uniques": 3
   }
 ]
