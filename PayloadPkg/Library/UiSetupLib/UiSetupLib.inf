@@ -27,7 +27,7 @@
 [Packages]
   MdePkg/MdePkg.dec
   BootloaderCommonPkg/BootloaderCommonPkg.dec
-  BootloaderCorePkg/BootloaderCorePkg.dec
+  #BootloaderCorePkg/BootloaderCorePkg.dec
   PayloadPkg/PayloadPkg.dec
   Platform/CommonBoardPkg/CommonBoardPkg.dec
   IntelFsp2Pkg/IntelFsp2Pkg.dec
@@ -39,12 +39,15 @@
   MemoryAllocationLib
   PrintLib
   BootloaderCommonLib
-  BootloaderCoreLib
+  HobLib
   ConfigDataLib
   VariableLib
   GraphicsLib
   ConsoleInLib
   ConsoleOutLib
+
+[Guids]
+  gUiSetupCfgDeltaGuid
 
 [Pcd]
   gPayloadTokenSpaceGuid.PcdUiSetupEnabled
@@ -52,4 +55,3 @@
   gPlatformCommonLibTokenSpaceGuid.PcdConsoleOutDeviceMask
   gPlatformCommonLibTokenSpaceGuid.PcdFrameBufferMaxConsoleWidth
   gPlatformCommonLibTokenSpaceGuid.PcdFrameBufferMaxConsoleHeight
-  gPlatformModuleTokenSpaceGuid.PcdFspsUpdPtr

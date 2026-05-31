@@ -44,10 +44,6 @@ typedef struct {
 #define UI_CFG_DELTA_MAX_ENTRIES 50
 #define UI_CFG_DELTA_VAR_NAME    L"CfgDelta"
 
-STATIC EFI_GUID  mUiSetupVarGuid = {
-  0x7A3E4B2D, 0x1F8C, 0x4A9E, {0xB0, 0x12, 0x5C, 0x8D, 0xAA, 0xE1, 0x34, 0x56}
-};
-
 STATIC
 VOID
 WriteConfigBits (
@@ -233,7 +229,7 @@ ApplyCfgDeltaToFspUpd (
   }
 
   DataSize = sizeof (DeltaBuf);
-  Status = GetVariable (UI_CFG_DELTA_VAR_NAME, &mUiSetupVarGuid, NULL, &DataSize, DeltaBuf);
+  Status = GetVariable (UI_CFG_DELTA_VAR_NAME, &gUiSetupCfgDeltaGuid, NULL, &DataSize, DeltaBuf);
   if (EFI_ERROR (Status)) {
     return;
   }

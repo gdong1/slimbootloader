@@ -21,13 +21,6 @@
 #define CDATA_FSPS_UPD_TAG  0x520
 #endif
 
-//
-// Delta variable GUID
-//
-STATIC EFI_GUID  mUiSetupVarGuid = {
-  0x7A3E4B2D, 0x1F8C, 0x4A9E, {0xB0, 0x12, 0x5C, 0x8D, 0xAA, 0xE1, 0x34, 0x56}
-};
-
 STATIC BOOLEAN   mDirty;
 STATIC UI_CFG_DELTA_ENTRY mDeltaEntries[UI_CFG_DELTA_MAX_ENTRIES];
 STATIC UINT8              mDeltaEntryCount;
@@ -119,7 +112,7 @@ ApplyDeltaFromVars (
   VOID               *TagData;
 
   DataSize = sizeof (DeltaBuf);
-  Status = GetVariable (UI_CFG_DELTA_VAR_NAME, &mUiSetupVarGuid, NULL, &DataSize, DeltaBuf);
+  Status = GetVariable (UI_CFG_DELTA_VAR_NAME, &gUiSetupCfgDeltaGuid, NULL, &DataSize, DeltaBuf);
   if (EFI_ERROR (Status)) {
     mDeltaEntryCount = 0;
     return Status;
@@ -230,7 +223,7 @@ CfgSave (
   PayloadSize = sizeof (UI_CFG_DELTA_HDR) + mDeltaEntryCount * sizeof (UI_CFG_DELTA_ENTRY);
   Status = SetVariable (
              UI_CFG_DELTA_VAR_NAME,
-             &mUiSetupVarGuid,
+             &gUiSetupCfgDeltaGuid,
              0,
              PayloadSize,
              DeltaBuf
@@ -275,7 +268,7 @@ CfgReloadDefaults (
 
   Status = SetVariable (
              UI_CFG_DELTA_VAR_NAME,
-             &mUiSetupVarGuid,
+             &gUiSetupCfgDeltaGuid,
              0,
              sizeof (DeltaBuf),
              DeltaBuf
