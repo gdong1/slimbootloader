@@ -12,8 +12,6 @@
 #include <Library/FspApiLib.h>
 #include <Library/BootloaderCoreLib.h>
 
-#define CDATA_FSPS_UPD_TAG  0x520
-
 
 /**
   This FSP API is called after TempRamExit API.

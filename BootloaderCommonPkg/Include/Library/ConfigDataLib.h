@@ -28,6 +28,8 @@
 
 #define CDATA_NO_TAG            0x000
 #define CDATA_PLATFORMID_TAG    0x0F0
+#define CDATA_FSPM_UPD_TAG      0x500
+#define CDATA_FSPS_UPD_TAG      0x520
 
 typedef struct {
   UINT16   PlatformId;

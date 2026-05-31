@@ -8,18 +8,11 @@
 #include "ConfigBridge.h"
 #include "FormEngine.h"
 #include <Library/BootloaderCommonLib.h>
+#include <Library/ConfigDataLib.h>
 #include <Library/HobLib.h>
 #include <Guid/LoaderFspInfoGuid.h>
 #include <ConfigDataStruct.h>
 #include <FspEas/FspApi.h>
-
-#ifndef CDATA_FSPM_UPD_TAG
-#define CDATA_FSPM_UPD_TAG  0x500
-#endif
-
-#ifndef CDATA_FSPS_UPD_TAG
-#define CDATA_FSPS_UPD_TAG  0x520
-#endif
 
 STATIC BOOLEAN   mDirty;
 STATIC UI_CFG_DELTA_ENTRY mDeltaEntries[UI_CFG_DELTA_MAX_ENTRIES];

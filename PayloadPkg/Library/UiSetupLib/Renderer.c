@@ -8,6 +8,7 @@
 #include "Renderer.h"
 #include "ConfigBridge.h"
 #include <Library/BootloaderCommonLib.h>
+#include <Library/ConfigDataLib.h>
 #include <Library/ConsoleOutLib.h>
 #include <Library/SerialPortLib.h>
 #include <Guid/GraphicsInfoHob.h>
@@ -42,7 +43,7 @@ STATIC UINT32   mGlyphWidth  = 8;
 STATIC UINT32   mGlyphHeight = 19;
 
 #define UI_SERIAL_COLS  100
-#define UI_SERIAL_ROWS  30
+#define UI_SERIAL_ROWS  50
 
 STATIC
 VOID

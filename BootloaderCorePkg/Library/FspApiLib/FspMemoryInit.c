@@ -13,8 +13,6 @@
 #include <Library/MemoryAllocationLib.h>
 #include <BootloaderCoreGlobal.h>
 
-#define CDATA_FSPM_UPD_TAG  0x500
-
 /**
   This FSP API is called after TempRamInit and initializes the memory.
   This FSP API accepts a pointer to a data structure that will be platform dependent
