@@ -35,6 +35,7 @@ UI_FIELD_TYPE_COMBO    = 0
 UI_FIELD_TYPE_EDITNUM  = 1
 UI_FIELD_TYPE_EDITTEXT = 2
 UI_FIELD_TYPE_RESERVED = 3
+UI_FIELD_TYPE_TABLE    = 4
 
 # Condition operators
 UI_COND_OP_EQUAL     = 0
@@ -54,6 +55,7 @@ class UiDescGenerator:
         self.conditions = []
         self.strings = bytearray()
         self.str_offsets = {}
+        self.combo_option_cache = {}
 
     def add_string(self, s):
         """Add a string to the string table, deduplicating."""
@@ -66,11 +68,66 @@ class UiDescGenerator:
         self.strings.extend(s.encode('utf-8') + b'\x00')
         return offset
 
+    def get_table_elem_bytes(self, item):
+        """Infer table element width (bytes) from option tokens like '0-1F:8:HEX'."""
+        option = str(item.get('option', '')).strip()
+        if not option:
+            return 1
+
+        token = option.split(',')[0].strip()
+        parts = token.split(':')
+        if len(parts) < 2:
+            return 1
+
+        try:
+            elem_bytes = int(parts[1], 0)
+        except ValueError:
+            elem_bytes = 1
+
+        if elem_bytes <= 0:
+            elem_bytes = 1
+        return elem_bytes
+
+    def get_table_preview_elems(self, item):
+        """Infer table element count from option spec; fall back to default if unclear."""
+        option = str(item.get('option', '')).strip()
+        if not option:
+            return 1
+
+        tokens = [tok.strip() for tok in option.split(',') if tok.strip()]
+        if not tokens:
+            return 1
+
+        m = re.match(r'^([0-9A-Fa-fxX]+)-([0-9A-Fa-fxX]+):(\d+):', tokens[0])
+        if m is not None:
+            try:
+                start = int(m.group(1), 0)
+            except ValueError:
+                start = int(m.group(1), 16)
+            try:
+                end = int(m.group(2), 0)
+            except ValueError:
+                end = int(m.group(2), 16)
+            if end >= start:
+                return end - start + 1
+
+        all_triplets = True
+        for tok in tokens:
+            if len(tok.split(':')) < 3:
+                all_triplets = False
+                break
+        if all_triplets:
+            return len(tokens)
+
+        return 1
+
     def get_field_type(self, item):
         """Determine UI field type from item's type string."""
         itype = item.get('type', 'Reserved')
         if itype.startswith('Reserved'):
             return UI_FIELD_TYPE_RESERVED
+        elif itype.startswith('Table'):
+            return UI_FIELD_TYPE_TABLE
         elif itype.startswith('Combo'):
             return UI_FIELD_TYPE_COMBO
         elif itype.startswith('EditNum'):
@@ -250,14 +307,61 @@ class UiDescGenerator:
                 opt_count = 0
                 if field_type == UI_FIELD_TYPE_COMBO:
                     opt_list = self.gen_cfg.get_cfg_item_options(item)
+                    parsed_opts = []
                     for (op_val, op_str) in opt_list:
                         try:
                             val = int(op_val.strip(), 0)
                         except ValueError:
                             val = 0
                         label_off = self.add_string(op_str.strip())
-                        self.options.append({'value': val, 'label_offset': label_off})
-                        opt_count += 1
+                        parsed_opts.append((val, label_off))
+
+                    opt_key = tuple(parsed_opts)
+                    if opt_key in self.combo_option_cache:
+                        opt_start, opt_count = self.combo_option_cache[opt_key]
+                    else:
+                        opt_start = len(self.options)
+                        for val, label_off in parsed_opts:
+                            self.options.append({'value': val, 'label_offset': label_off})
+                        opt_count = len(parsed_opts)
+                        self.combo_option_cache[opt_key] = (opt_start, opt_count)
+
+                # Keep table fields compact in descriptor. Runtime UI reads element
+                # metadata from option_start_idx/option_count.
+                itype = item.get('type', 'Reserved')
+                if itype.startswith('Table'):
+                    total_bits = int(item.get('length', 0))
+                    elem_bytes = self.get_table_elem_bytes(item)
+                    elem_bits = elem_bytes * 8
+                    if elem_bits <= 0:
+                        continue
+
+                    elem_count = total_bits // elem_bits
+                    if elem_count <= 0:
+                        continue
+
+                    name = item.get('name', cname)
+                    help_text = item.get('help', '')
+                    field_path = item.get('path', '')
+                    name_off = self.add_string(name)
+                    help_off = self.add_string(help_text)
+                    path_off = self.add_string(field_path)
+
+                    self.fields.append({
+                        'tag_id': item_tag,
+                        'bit_offset': rel_bit_offset,
+                        'bit_length': total_bits,
+                        'field_type': UI_FIELD_TYPE_TABLE,
+                        'condition_idx': cond_idx,
+                        'name_str_offset': name_off,
+                        'help_str_offset': help_off,
+                        'path_str_offset': path_off,
+                        'option_start_idx': elem_bits,
+                        'option_count': elem_count,
+                    })
+                    field_count += 1
+
+                    continue
 
                 # Add field
                 name = item.get('name', cname)
