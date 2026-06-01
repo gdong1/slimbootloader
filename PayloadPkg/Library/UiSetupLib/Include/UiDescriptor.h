@@ -72,6 +72,7 @@ typedef struct {
 #define UI_FIELD_TYPE_EDITNUM   1
 #define UI_FIELD_TYPE_EDITTEXT  2
 #define UI_FIELD_TYPE_RESERVED  3
+#define UI_FIELD_TYPE_TABLE     4
 
 //
 // Condition operators
