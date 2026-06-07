@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 271,
-    "uniques": 27
+    "count": 266,
+    "uniques": 31
   },
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 230,
-    "uniques": 103
+    "count": 243,
+    "uniques": 111
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 104,
-    "uniques": 18
+    "count": 112,
+    "uniques": 21
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2690",
     "title": "/pull/2690",
-    "count": 98,
+    "count": 96,
     "uniques": 12
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2695",
-    "title": "/pull/2695",
-    "count": 46,
-    "uniques": 10
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master",
-    "title": "/tree/master",
-    "count": 45,
-    "uniques": 17
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2702",
-    "title": "/pull/2702",
-    "count": 37,
-    "uniques": 6
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2707",
     "title": "/pull/2707",
-    "count": 33,
-    "uniques": 5
+    "count": 69,
+    "uniques": 12
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master",
+    "title": "/tree/master",
+    "count": 65,
+    "uniques": 21
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2695",
+    "title": "/pull/2695",
+    "count": 43,
+    "uniques": 10
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 31,
-    "uniques": 21
+    "count": 33,
+    "uniques": 25
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2704",
-    "title": "/pull/2704",
-    "count": 25,
-    "uniques": 8
+    "path": "/slimbootloader/slimbootloader/pull/2708",
+    "title": "/pull/2708",
+    "count": 30,
+    "uniques": 9
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2712",
+    "title": "/pull/2712",
+    "count": 28,
+    "uniques": 4
   }
 ]
