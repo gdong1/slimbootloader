@@ -1,12 +1,12 @@
 [
   {
     "referrer": "github.com",
-    "count": 250,
-    "uniques": 61
+    "count": 257,
+    "uniques": 59
   },
   {
     "referrer": "Google",
-    "count": 108,
+    "count": 112,
     "uniques": 30
   },
   {
@@ -15,19 +15,19 @@
     "uniques": 13
   },
   {
+    "referrer": "Bing",
+    "count": 29,
+    "uniques": 8
+  },
+  {
     "referrer": "intel.com",
     "count": 12,
-    "uniques": 6
+    "uniques": 7
   },
   {
     "referrer": "DuckDuckGo",
     "count": 10,
     "uniques": 4
-  },
-  {
-    "referrer": "Bing",
-    "count": 9,
-    "uniques": 7
   },
   {
     "referrer": "groups.io",
@@ -41,8 +41,8 @@
   },
   {
     "referrer": "search.brave.com",
-    "count": 4,
-    "uniques": 3
+    "count": 3,
+    "uniques": 2
   },
   {
     "referrer": "hsdes.intel.com",
