@@ -15,6 +15,8 @@
 // x86gprintrin.h might be missing on some GCC toolchain images.
 #if defined(__has_include) && __has_include(<x86gprintrin.h>)
 #include <x86gprintrin.h>
+// Provide SSE2 vector types (__m128i etc.) and intrinsics needed by ipp-crypto
+#include <emmintrin.h>
 #else
 // Fallback: provide only the GP-register intrinsics used by ipp-crypto.
 #ifndef IPP_SBL_LZCNT_INTRINSICS_DEFINED
@@ -33,6 +35,5 @@ _lzcnt_u64 (unsigned long long __X)
 }
 #endif /* IPP_SBL_LZCNT_INTRINSICS_DEFINED */
 #endif
-// Provide SSE2 vector types (__m128i etc.) and intrinsics needed by ipp-crypto
-#include <emmintrin.h>
+
 #endif
