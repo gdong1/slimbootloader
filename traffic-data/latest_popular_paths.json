@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 427,
-    "uniques": 147
+    "count": 413,
+    "uniques": 141
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 368,
-    "uniques": 44
+    "count": 330,
+    "uniques": 39
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 167,
-    "uniques": 24
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2707",
-    "title": "/pull/2707",
-    "count": 78,
-    "uniques": 25
+    "count": 178,
+    "uniques": 23
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 63,
-    "uniques": 18
+    "count": 65,
+    "uniques": 19
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2707",
+    "title": "/pull/2707",
+    "count": 64,
+    "uniques": 22
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 60,
-    "uniques": 30
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2705",
-    "title": "/pull/2705",
-    "count": 44,
-    "uniques": 7
+    "count": 58,
+    "uniques": 26
   },
   {
     "path": "/slimbootloader/slimbootloader/issues",
     "title": "/issues",
-    "count": 41,
-    "uniques": 17
+    "count": 44,
+    "uniques": 18
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2705",
+    "title": "/pull/2705",
+    "count": 43,
+    "uniques": 7
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform/AlderlakeBoardPkg",
     "title": "/tree/master/Platform/AlderlakeBoardPkg",
     "count": 34,
-    "uniques": 11
+    "uniques": 10
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2705/changes",
-    "title": "/pull/2705/changes",
-    "count": 32,
-    "uniques": 4
+    "path": "/slimbootloader/slimbootloader/pull/2729",
+    "title": "/pull/2729",
+    "count": 31,
+    "uniques": 8
   }
 ]
