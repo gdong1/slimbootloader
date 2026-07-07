@@ -1,18 +1,18 @@
 [
   {
     "referrer": "github.com",
-    "count": 474,
+    "count": 481,
     "uniques": 62
   },
   {
     "referrer": "Google",
-    "count": 138,
-    "uniques": 43
+    "count": 129,
+    "uniques": 44
   },
   {
     "referrer": "Bing",
-    "count": 26,
-    "uniques": 17
+    "count": 23,
+    "uniques": 15
   },
   {
     "referrer": "groups.io",
@@ -25,14 +25,14 @@
     "uniques": 4
   },
   {
-    "referrer": "DuckDuckGo",
-    "count": 10,
-    "uniques": 6
-  },
-  {
     "referrer": "intel.com",
     "count": 8,
     "uniques": 6
+  },
+  {
+    "referrer": "DuckDuckGo",
+    "count": 6,
+    "uniques": 5
   },
   {
     "referrer": "yandex.ru",
