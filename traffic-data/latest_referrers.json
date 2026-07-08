@@ -1,28 +1,28 @@
 [
   {
     "referrer": "github.com",
-    "count": 481,
+    "count": 434,
     "uniques": 62
   },
   {
     "referrer": "Google",
-    "count": 129,
-    "uniques": 44
-  },
-  {
-    "referrer": "Bing",
-    "count": 23,
-    "uniques": 15
+    "count": 147,
+    "uniques": 48
   },
   {
     "referrer": "groups.io",
-    "count": 19,
-    "uniques": 9
+    "count": 21,
+    "uniques": 11
+  },
+  {
+    "referrer": "Bing",
+    "count": 20,
+    "uniques": 13
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 16,
-    "uniques": 4
+    "count": 15,
+    "uniques": 3
   },
   {
     "referrer": "intel.com",
@@ -31,18 +31,18 @@
   },
   {
     "referrer": "DuckDuckGo",
-    "count": 6,
-    "uniques": 5
-  },
-  {
-    "referrer": "yandex.ru",
-    "count": 6,
-    "uniques": 3
+    "count": 7,
+    "uniques": 4
   },
   {
     "referrer": "confluence.edn.entds.ngisn.com",
-    "count": 2,
-    "uniques": 1
+    "count": 7,
+    "uniques": 2
+  },
+  {
+    "referrer": "yandex.ru",
+    "count": 5,
+    "uniques": 3
   },
   {
     "referrer": "chatgpt.com",
