@@ -2,26 +2,26 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 375,
-    "uniques": 131
+    "count": 374,
+    "uniques": 132
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
     "count": 183,
-    "uniques": 26
+    "uniques": 27
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 123,
-    "uniques": 38
+    "count": 122,
+    "uniques": 39
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 102,
-    "uniques": 19
+    "count": 103,
+    "uniques": 20
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
@@ -44,19 +44,19 @@
   {
     "path": "/slimbootloader/slimbootloader/issues",
     "title": "/issues",
-    "count": 28,
-    "uniques": 12
+    "count": 26,
+    "uniques": 11
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/Platform/AlderlakeBoardPkg",
+    "title": "/tree/master/Platform/AlderlakeBoardPkg",
+    "count": 24,
+    "uniques": 8
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2735",
     "title": "/pull/2735",
     "count": 24,
     "uniques": 7
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2742",
-    "title": "/pull/2742",
-    "count": 24,
-    "uniques": 6
   }
 ]
