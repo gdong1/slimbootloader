@@ -1,12 +1,12 @@
 [
   {
     "referrer": "github.com",
-    "count": 255,
-    "uniques": 56
+    "count": 273,
+    "uniques": 54
   },
   {
     "referrer": "Google",
-    "count": 160,
+    "count": 159,
     "uniques": 43
   },
   {
@@ -17,12 +17,12 @@
   {
     "referrer": "Bing",
     "count": 30,
-    "uniques": 11
+    "uniques": 12
   },
   {
     "referrer": "DuckDuckGo",
-    "count": 17,
-    "uniques": 6
+    "count": 18,
+    "uniques": 7
   },
   {
     "referrer": "teams.public.onecdn.static.microsoft",
@@ -31,13 +31,8 @@
   },
   {
     "referrer": "groups.io",
-    "count": 12,
-    "uniques": 7
-  },
-  {
-    "referrer": "intel.com",
-    "count": 5,
-    "uniques": 3
+    "count": 13,
+    "uniques": 8
   },
   {
     "referrer": "confluence.edn.entds.ngisn.com",
@@ -48,5 +43,10 @@
     "referrer": "ya.ru",
     "count": 4,
     "uniques": 2
+  },
+  {
+    "referrer": "yandex.ru",
+    "count": 4,
+    "uniques": 1
   }
 ]
