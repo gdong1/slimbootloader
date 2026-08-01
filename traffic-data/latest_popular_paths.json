@@ -2,38 +2,32 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 299,
-    "uniques": 113
+    "count": 349,
+    "uniques": 132
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 155,
-    "uniques": 21
+    "count": 177,
+    "uniques": 26
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 71,
+    "count": 70,
     "uniques": 33
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/commits/master",
-    "title": "/commits/master",
-    "count": 62,
-    "uniques": 15
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 60,
+    "count": 66,
     "uniques": 28
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2744",
-    "title": "/pull/2744",
-    "count": 34,
-    "uniques": 9
+    "path": "/slimbootloader/slimbootloader/commits/master",
+    "title": "/commits/master",
+    "count": 65,
+    "uniques": 18
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2744/changes",
@@ -42,21 +36,27 @@
     "uniques": 3
   },
   {
+    "path": "/slimbootloader/slimbootloader/pull/2744",
+    "title": "/pull/2744",
+    "count": 32,
+    "uniques": 7
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2768",
+    "title": "/pull/2768",
+    "count": 27,
+    "uniques": 12
+  },
+  {
     "path": "/slimbootloader/slimbootloader/pull/2744/checks",
     "title": "/pull/2744/checks",
     "count": 23,
     "uniques": 4
   },
   {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform/AlderlakeBoardPkg",
-    "title": "/tree/master/Platform/AlderlakeBoardPkg",
-    "count": 19,
-    "uniques": 11
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2758",
-    "title": "/pull/2758",
-    "count": 19,
-    "uniques": 8
+    "path": "/slimbootloader/slimbootloader/tree/master/Silicon",
+    "title": "/tree/master/Silicon",
+    "count": 22,
+    "uniques": 17
   }
 ]
