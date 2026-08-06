@@ -1,23 +1,23 @@
 [
   {
     "referrer": "github.com",
-    "count": 254,
+    "count": 265,
     "uniques": 50
   },
   {
     "referrer": "Google",
-    "count": 178,
-    "uniques": 42
-  },
-  {
-    "referrer": "Bing",
-    "count": 42,
-    "uniques": 12
+    "count": 176,
+    "uniques": 41
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 42,
+    "count": 34,
     "uniques": 6
+  },
+  {
+    "referrer": "Bing",
+    "count": 33,
+    "uniques": 11
   },
   {
     "referrer": "DuckDuckGo",
