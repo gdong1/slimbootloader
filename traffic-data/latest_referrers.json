@@ -1,8 +1,8 @@
 [
   {
     "referrer": "github.com",
-    "count": 227,
-    "uniques": 51
+    "count": 222,
+    "uniques": 50
   },
   {
     "referrer": "Google",
@@ -11,7 +11,7 @@
   },
   {
     "referrer": "Bing",
-    "count": 46,
+    "count": 51,
     "uniques": 15
   },
   {
@@ -35,6 +35,11 @@
     "uniques": 5
   },
   {
+    "referrer": "yandex.ru",
+    "count": 8,
+    "uniques": 3
+  },
+  {
     "referrer": "intel.lightning.force.com",
     "count": 7,
     "uniques": 1
@@ -43,10 +48,5 @@
     "referrer": "statics.gov.teams.microsoft.us",
     "count": 6,
     "uniques": 3
-  },
-  {
-    "referrer": "yandex.ru",
-    "count": 6,
-    "uniques": 2
   }
 ]
