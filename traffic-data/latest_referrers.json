@@ -1,13 +1,18 @@
 [
   {
     "referrer": "github.com",
-    "count": 188,
-    "uniques": 38
+    "count": 201,
+    "uniques": 42
   },
   {
     "referrer": "Google",
-    "count": 148,
-    "uniques": 38
+    "count": 137,
+    "uniques": 33
+  },
+  {
+    "referrer": "DuckDuckGo",
+    "count": 79,
+    "uniques": 6
   },
   {
     "referrer": "Bing",
@@ -16,17 +21,12 @@
   },
   {
     "referrer": "groups.io",
-    "count": 11,
-    "uniques": 6
-  },
-  {
-    "referrer": "slimbootloader.github.io",
     "count": 10,
     "uniques": 5
   },
   {
-    "referrer": "DuckDuckGo",
-    "count": 9,
+    "referrer": "slimbootloader.github.io",
+    "count": 10,
     "uniques": 5
   },
   {
