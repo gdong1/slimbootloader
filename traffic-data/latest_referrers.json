@@ -1,13 +1,13 @@
 [
   {
     "referrer": "github.com",
-    "count": 424,
-    "uniques": 47
+    "count": 391,
+    "uniques": 45
   },
   {
     "referrer": "Google",
-    "count": 287,
-    "uniques": 44
+    "count": 238,
+    "uniques": 42
   },
   {
     "referrer": "DuckDuckGo",
@@ -21,18 +21,18 @@
   },
   {
     "referrer": "intel.com",
-    "count": 26,
-    "uniques": 12
-  },
-  {
-    "referrer": "slimbootloader.github.io",
-    "count": 12,
-    "uniques": 6
+    "count": 30,
+    "uniques": 14
   },
   {
     "referrer": "Bing",
     "count": 11,
     "uniques": 8
+  },
+  {
+    "referrer": "slimbootloader.github.io",
+    "count": 11,
+    "uniques": 5
   },
   {
     "referrer": "teams.public.onecdn.static.microsoft",
@@ -41,12 +41,12 @@
   },
   {
     "referrer": "blog.csdn.net",
-    "count": 3,
-    "uniques": 3
-  },
-  {
-    "referrer": "statics.gov.teams.microsoft.us",
     "count": 2,
     "uniques": 2
+  },
+  {
+    "referrer": "graviton-git.3l.ru",
+    "count": 2,
+    "uniques": 1
   }
 ]
