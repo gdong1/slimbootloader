@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 363,
-    "uniques": 126
+    "count": 397,
+    "uniques": 143
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 241,
-    "uniques": 25
+    "count": 275,
+    "uniques": 30
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 56,
-    "uniques": 15
+    "count": 66,
+    "uniques": 19
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 42,
-    "uniques": 29
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2784",
-    "title": "/pull/2784",
-    "count": 38,
-    "uniques": 8
+    "count": 49,
+    "uniques": 31
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 35,
-    "uniques": 19
+    "count": 34,
+    "uniques": 22
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2791",
     "title": "/pull/2791",
-    "count": 31,
-    "uniques": 9
+    "count": 33,
+    "uniques": 10
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/tree/master/Silicon",
+    "title": "/tree/master/Silicon",
+    "count": 29,
+    "uniques": 12
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2784",
+    "title": "/pull/2784",
+    "count": 29,
+    "uniques": 8
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2793",
+    "title": "/pull/2793",
+    "count": 27,
+    "uniques": 8
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2706",
     "title": "/pull/2706",
-    "count": 31,
-    "uniques": 8
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2772",
-    "title": "/pull/2772",
-    "count": 31,
-    "uniques": 4
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2784/changes",
-    "title": "/pull/2784/changes",
-    "count": 28,
-    "uniques": 6
+    "count": 25,
+    "uniques": 7
   }
 ]
