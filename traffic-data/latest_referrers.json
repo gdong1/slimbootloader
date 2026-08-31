@@ -1,23 +1,18 @@
 [
   {
     "referrer": "github.com",
-    "count": 426,
-    "uniques": 53
+    "count": 302,
+    "uniques": 48
   },
   {
     "referrer": "Google",
-    "count": 259,
-    "uniques": 49
-  },
-  {
-    "referrer": "DuckDuckGo",
-    "count": 77,
-    "uniques": 3
+    "count": 244,
+    "uniques": 52
   },
   {
     "referrer": "yandex.ru",
-    "count": 34,
-    "uniques": 3
+    "count": 35,
+    "uniques": 4
   },
   {
     "referrer": "intel.com",
@@ -26,13 +21,8 @@
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 11,
-    "uniques": 6
-  },
-  {
-    "referrer": "Bing",
-    "count": 10,
-    "uniques": 8
+    "count": 12,
+    "uniques": 7
   },
   {
     "referrer": "teams.public.onecdn.static.microsoft",
@@ -40,13 +30,23 @@
     "uniques": 1
   },
   {
+    "referrer": "Bing",
+    "count": 9,
+    "uniques": 7
+  },
+  {
+    "referrer": "DuckDuckGo",
+    "count": 7,
+    "uniques": 2
+  },
+  {
     "referrer": "graviton-git.3l.ru",
     "count": 4,
     "uniques": 1
   },
   {
-    "referrer": "blog.csdn.net",
-    "count": 2,
-    "uniques": 2
+    "referrer": "4pda.to",
+    "count": 1,
+    "uniques": 1
   }
 ]
