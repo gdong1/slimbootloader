@@ -1,18 +1,13 @@
 [
   {
     "referrer": "github.com",
-    "count": 247,
-    "uniques": 51
+    "count": 213,
+    "uniques": 53
   },
   {
     "referrer": "Google",
-    "count": 144,
+    "count": 130,
     "uniques": 52
-  },
-  {
-    "referrer": "DuckDuckGo",
-    "count": 14,
-    "uniques": 4
   },
   {
     "referrer": "icl-techno.bitrix24.ru",
@@ -20,24 +15,29 @@
     "uniques": 1
   },
   {
-    "referrer": "slimbootloader.github.io",
-    "count": 10,
-    "uniques": 6
-  },
-  {
-    "referrer": "intel.com",
-    "count": 9,
-    "uniques": 7
-  },
-  {
     "referrer": "yandex.ru",
+    "count": 10,
+    "uniques": 5
+  },
+  {
+    "referrer": "slimbootloader.github.io",
     "count": 9,
-    "uniques": 4
+    "uniques": 5
+  },
+  {
+    "referrer": "DuckDuckGo",
+    "count": 9,
+    "uniques": 3
   },
   {
     "referrer": "Bing",
     "count": 8,
     "uniques": 7
+  },
+  {
+    "referrer": "intel.com",
+    "count": 7,
+    "uniques": 5
   },
   {
     "referrer": "graviton-git.3l.ru",
