@@ -6,8 +6,8 @@
   },
   {
     "referrer": "Google",
-    "count": 122,
-    "uniques": 46
+    "count": 120,
+    "uniques": 45
   },
   {
     "referrer": "yandex.ru",
@@ -16,8 +16,8 @@
   },
   {
     "referrer": "Bing",
-    "count": 21,
-    "uniques": 11
+    "count": 23,
+    "uniques": 13
   },
   {
     "referrer": "DuckDuckGo",
@@ -25,14 +25,14 @@
     "uniques": 4
   },
   {
+    "referrer": "chatgpt.com",
+    "count": 10,
+    "uniques": 4
+  },
+  {
     "referrer": "icl-techno.bitrix24.ru",
     "count": 10,
     "uniques": 1
-  },
-  {
-    "referrer": "chatgpt.com",
-    "count": 9,
-    "uniques": 3
   },
   {
     "referrer": "blog.csdn.net",
