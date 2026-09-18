@@ -1,28 +1,28 @@
 [
   {
     "referrer": "github.com",
-    "count": 159,
-    "uniques": 44
+    "count": 150,
+    "uniques": 45
   },
   {
     "referrer": "Google",
-    "count": 126,
-    "uniques": 46
+    "count": 131,
+    "uniques": 47
   },
   {
     "referrer": "yandex.ru",
-    "count": 41,
-    "uniques": 4
+    "count": 42,
+    "uniques": 5
   },
   {
     "referrer": "Bing",
-    "count": 24,
-    "uniques": 13
+    "count": 25,
+    "uniques": 14
   },
   {
     "referrer": "DuckDuckGo",
-    "count": 16,
-    "uniques": 4
+    "count": 10,
+    "uniques": 3
   },
   {
     "referrer": "slimbootloader.github.io",
@@ -40,13 +40,13 @@
     "uniques": 1
   },
   {
-    "referrer": "intel.com",
-    "count": 3,
+    "referrer": "groups.io",
+    "count": 4,
     "uniques": 3
   },
   {
-    "referrer": "groups.io",
+    "referrer": "intel.com",
     "count": 3,
-    "uniques": 2
+    "uniques": 3
   }
 ]
