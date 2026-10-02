@@ -2,60 +2,60 @@
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 450,
-    "uniques": 153
+    "count": 446,
+    "uniques": 148
   },
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 301,
+    "count": 297,
     "uniques": 33
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 56,
-    "uniques": 31
+    "count": 59,
+    "uniques": 32
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 52,
+    "count": 53,
     "uniques": 17
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 43,
-    "uniques": 26
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2830",
-    "title": "/pull/2830",
-    "count": 43,
-    "uniques": 9
+    "count": 50,
+    "uniques": 32
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2844",
     "title": "/pull/2844",
-    "count": 37,
-    "uniques": 11
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/issues",
-    "title": "/issues",
-    "count": 30,
-    "uniques": 11
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2839",
-    "title": "/pull/2839",
-    "count": 30,
-    "uniques": 8
+    "count": 39,
+    "uniques": 12
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2845",
     "title": "/pull/2845",
+    "count": 37,
+    "uniques": 8
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2830",
+    "title": "/pull/2830",
+    "count": 32,
+    "uniques": 8
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2839",
+    "title": "/pull/2839",
+    "count": 31,
+    "uniques": 8
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2842",
+    "title": "/pull/2842",
     "count": 30,
     "uniques": 8
   }
