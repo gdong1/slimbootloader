@@ -2,22 +2,22 @@
   {
     "referrer": "github.com",
     "count": 177,
-    "uniques": 54
+    "uniques": 55
   },
   {
     "referrer": "Google",
-    "count": 84,
+    "count": 75,
     "uniques": 48
   },
   {
     "referrer": "Bing",
-    "count": 14,
-    "uniques": 12
+    "count": 13,
+    "uniques": 11
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 10,
-    "uniques": 7
+    "count": 9,
+    "uniques": 6
   },
   {
     "referrer": "groups.io",
@@ -35,17 +35,17 @@
     "uniques": 2
   },
   {
+    "referrer": "vinmotion.atlassian.net",
+    "count": 3,
+    "uniques": 2
+  },
+  {
     "referrer": "search.brave.com",
     "count": 3,
     "uniques": 1
   },
   {
     "referrer": "DuckDuckGo",
-    "count": 2,
-    "uniques": 2
-  },
-  {
-    "referrer": "yandex.ru",
     "count": 2,
     "uniques": 2
   }
