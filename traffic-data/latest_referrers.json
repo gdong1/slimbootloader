@@ -1,13 +1,13 @@
 [
   {
     "referrer": "github.com",
-    "count": 150,
-    "uniques": 50
+    "count": 148,
+    "uniques": 49
   },
   {
     "referrer": "Google",
-    "count": 66,
-    "uniques": 40
+    "count": 69,
+    "uniques": 41
   },
   {
     "referrer": "Bing",
@@ -16,8 +16,8 @@
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 11,
-    "uniques": 7
+    "count": 10,
+    "uniques": 6
   },
   {
     "referrer": "groups.io",
@@ -26,8 +26,13 @@
   },
   {
     "referrer": "vinmotion.atlassian.net",
-    "count": 4,
+    "count": 5,
     "uniques": 2
+  },
+  {
+    "referrer": "DuckDuckGo",
+    "count": 3,
+    "uniques": 3
   },
   {
     "referrer": "yandex.ru",
@@ -35,18 +40,13 @@
     "uniques": 3
   },
   {
+    "referrer": "intel.com",
+    "count": 3,
+    "uniques": 2
+  },
+  {
     "referrer": "search.brave.com",
     "count": 3,
-    "uniques": 1
-  },
-  {
-    "referrer": "bbs.wehack.space",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "referrer": "intel.com",
-    "count": 2,
     "uniques": 1
   }
 ]
