@@ -2,44 +2,38 @@
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 267,
-    "uniques": 25
+    "count": 246,
+    "uniques": 27
   },
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 210,
-    "uniques": 79
+    "count": 178,
+    "uniques": 68
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 63,
-    "uniques": 14
+    "count": 52,
+    "uniques": 13
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2861",
-    "title": "/pull/2861",
-    "count": 37,
-    "uniques": 11
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
-    "title": "/tree/master/Platform",
-    "count": 27,
-    "uniques": 16
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2861/changes",
-    "title": "/pull/2861/changes",
+    "path": "/slimbootloader/slimbootloader/pull/2870",
+    "title": "/pull/2870",
     "count": 23,
-    "uniques": 7
+    "uniques": 9
   },
   {
-    "path": "/slimbootloader/slimbootloader/tree/master/Silicon",
-    "title": "/tree/master/Silicon",
-    "count": 20,
-    "uniques": 15
+    "path": "/slimbootloader/slimbootloader/pull/2846",
+    "title": "/pull/2846",
+    "count": 22,
+    "uniques": 8
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2846/changes",
+    "title": "/pull/2846/changes",
+    "count": 22,
+    "uniques": 2
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2871",
@@ -48,15 +42,21 @@
     "uniques": 5
   },
   {
-    "path": "/slimbootloader/slimbootloader/tree/master",
-    "title": "/tree/master",
+    "path": "/slimbootloader/slimbootloader/pull/2861",
+    "title": "/pull/2861",
     "count": 19,
-    "uniques": 12
+    "uniques": 8
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2870",
-    "title": "/pull/2870",
-    "count": 19,
-    "uniques": 9
+    "path": "/slimbootloader/slimbootloader/tree/master/Silicon",
+    "title": "/tree/master/Silicon",
+    "count": 18,
+    "uniques": 14
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2864",
+    "title": "/pull/2864",
+    "count": 18,
+    "uniques": 6
   }
 ]
