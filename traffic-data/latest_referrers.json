@@ -1,13 +1,18 @@
 [
   {
+    "referrer": "aocr.org",
+    "count": 47,
+    "uniques": 47
+  },
+  {
     "referrer": "github.com",
     "count": 41,
     "uniques": 24
   },
   {
     "referrer": "Google",
-    "count": 35,
-    "uniques": 19
+    "count": 36,
+    "uniques": 20
   },
   {
     "referrer": "slimbootloader.github.io",
@@ -16,18 +21,18 @@
   },
   {
     "referrer": "Bing",
-    "count": 6,
-    "uniques": 6
+    "count": 7,
+    "uniques": 7
   },
   {
     "referrer": "groups.io",
-    "count": 5,
-    "uniques": 3
+    "count": 6,
+    "uniques": 4
   },
   {
     "referrer": "DuckDuckGo",
-    "count": 4,
-    "uniques": 3
+    "count": 5,
+    "uniques": 4
   },
   {
     "referrer": "intel.com",
@@ -42,11 +47,6 @@
   {
     "referrer": "teams.public.onecdn.static.microsoft",
     "count": 2,
-    "uniques": 1
-  },
-  {
-    "referrer": "Baidu",
-    "count": 1,
     "uniques": 1
   }
 ]
