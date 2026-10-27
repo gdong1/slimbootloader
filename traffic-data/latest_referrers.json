@@ -11,8 +11,8 @@
   },
   {
     "referrer": "Google",
-    "count": 36,
-    "uniques": 20
+    "count": 34,
+    "uniques": 19
   },
   {
     "referrer": "slimbootloader.github.io",
@@ -32,12 +32,7 @@
   {
     "referrer": "DuckDuckGo",
     "count": 5,
-    "uniques": 4
-  },
-  {
-    "referrer": "intel.com",
-    "count": 2,
-    "uniques": 2
+    "uniques": 5
   },
   {
     "referrer": "bbs.wehack.space",
@@ -47,6 +42,11 @@
   {
     "referrer": "teams.public.onecdn.static.microsoft",
     "count": 2,
+    "uniques": 1
+  },
+  {
+    "referrer": "Baidu",
+    "count": 1,
     "uniques": 1
   }
 ]
