@@ -1,28 +1,28 @@
 [
   {
-    "referrer": "aocr.org",
-    "count": 47,
-    "uniques": 47
+    "referrer": "github.com",
+    "count": 59,
+    "uniques": 33
   },
   {
-    "referrer": "github.com",
-    "count": 45,
-    "uniques": 29
+    "referrer": "aocr.org",
+    "count": 51,
+    "uniques": 51
   },
   {
     "referrer": "Google",
     "count": 33,
-    "uniques": 20
+    "uniques": 21
   },
   {
     "referrer": "slimbootloader.github.io",
-    "count": 12,
+    "count": 17,
     "uniques": 8
   },
   {
     "referrer": "Bing",
-    "count": 7,
-    "uniques": 7
+    "count": 8,
+    "uniques": 8
   },
   {
     "referrer": "DuckDuckGo",
@@ -45,7 +45,7 @@
     "uniques": 1
   },
   {
-    "referrer": "Baidu",
+    "referrer": "Yahoo",
     "count": 1,
     "uniques": 1
   }
