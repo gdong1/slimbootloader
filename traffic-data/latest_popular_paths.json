@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 284,
+    "count": 295,
     "uniques": 33
   },
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 177,
-    "uniques": 90
+    "count": 190,
+    "uniques": 98
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 38,
-    "uniques": 16
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2846",
-    "title": "/pull/2846",
-    "count": 33,
-    "uniques": 12
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2870",
-    "title": "/pull/2870",
-    "count": 31,
-    "uniques": 11
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2846/changes",
-    "title": "/pull/2846/changes",
-    "count": 31,
-    "uniques": 3
+    "count": 42,
+    "uniques": 18
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2879",
     "title": "/pull/2879",
-    "count": 25,
-    "uniques": 12
+    "count": 33,
+    "uniques": 14
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2886",
+    "title": "/pull/2886",
+    "count": 32,
+    "uniques": 6
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2886/checks",
+    "title": "/pull/2886/checks",
+    "count": 32,
+    "uniques": 4
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2846",
+    "title": "/pull/2846",
+    "count": 28,
+    "uniques": 10
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2870",
+    "title": "/pull/2870",
+    "count": 28,
+    "uniques": 10
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2846/changes",
+    "title": "/pull/2846/changes",
+    "count": 27,
+    "uniques": 4
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2882",
     "title": "/pull/2882",
     "count": 24,
-    "uniques": 5
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/tree/master/Platform",
-    "title": "/tree/master/Platform",
-    "count": 21,
-    "uniques": 15
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2871",
-    "title": "/pull/2871",
-    "count": 20,
     "uniques": 5
   }
 ]
