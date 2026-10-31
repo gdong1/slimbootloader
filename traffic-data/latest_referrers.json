@@ -1,18 +1,18 @@
 [
   {
-    "referrer": "github.com",
-    "count": 74,
-    "uniques": 39
+    "referrer": "aocr.org",
+    "count": 97,
+    "uniques": 97
   },
   {
-    "referrer": "aocr.org",
-    "count": 65,
-    "uniques": 65
+    "referrer": "github.com",
+    "count": 77,
+    "uniques": 36
   },
   {
     "referrer": "Google",
     "count": 32,
-    "uniques": 23
+    "uniques": 22
   },
   {
     "referrer": "slimbootloader.github.io",
@@ -21,8 +21,8 @@
   },
   {
     "referrer": "Bing",
-    "count": 8,
-    "uniques": 8
+    "count": 9,
+    "uniques": 9
   },
   {
     "referrer": "DuckDuckGo",
@@ -31,8 +31,8 @@
   },
   {
     "referrer": "groups.io",
-    "count": 3,
-    "uniques": 3
+    "count": 4,
+    "uniques": 4
   },
   {
     "referrer": "bbs.wehack.space",
