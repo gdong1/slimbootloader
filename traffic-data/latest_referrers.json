@@ -1,13 +1,13 @@
 [
   {
     "referrer": "github.com",
-    "count": 118,
-    "uniques": 64
+    "count": 135,
+    "uniques": 63
   },
   {
     "referrer": "Google",
-    "count": 42,
-    "uniques": 31
+    "count": 43,
+    "uniques": 32
   },
   {
     "referrer": "groups.io",
@@ -16,17 +16,17 @@
   },
   {
     "referrer": "intel.com",
-    "count": 19,
-    "uniques": 15
+    "count": 18,
+    "uniques": 14
+  },
+  {
+    "referrer": "slimbootloader.github.io",
+    "count": 12,
+    "uniques": 8
   },
   {
     "referrer": "Bing",
     "count": 11,
-    "uniques": 8
-  },
-  {
-    "referrer": "slimbootloader.github.io",
-    "count": 9,
     "uniques": 8
   },
   {
@@ -40,12 +40,12 @@
     "uniques": 1
   },
   {
-    "referrer": "DuckDuckGo",
+    "referrer": "learn.zoho.in",
     "count": 2,
     "uniques": 2
   },
   {
-    "referrer": "learn.zoho.in",
+    "referrer": "qnx.com",
     "count": 2,
     "uniques": 2
   }

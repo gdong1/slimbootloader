@@ -2,61 +2,61 @@
   {
     "path": "/slimbootloader/slimbootloader/pulls",
     "title": "/pulls",
-    "count": 589,
-    "uniques": 43
+    "count": 602,
+    "uniques": 46
   },
   {
     "path": "/slimbootloader/slimbootloader",
     "title": "Overview",
-    "count": 429,
-    "uniques": 144
+    "count": 428,
+    "uniques": 147
   },
   {
     "path": "/slimbootloader/slimbootloader/commits/master",
     "title": "/commits/master",
-    "count": 78,
-    "uniques": 28
+    "count": 71,
+    "uniques": 26
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master",
     "title": "/tree/master",
-    "count": 53,
-    "uniques": 27
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2901",
-    "title": "/pull/2901",
-    "count": 47,
-    "uniques": 6
+    "count": 58,
+    "uniques": 29
   },
   {
     "path": "/slimbootloader/slimbootloader/pull/2915",
     "title": "/pull/2915",
-    "count": 40,
-    "uniques": 18
+    "count": 49,
+    "uniques": 21
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Platform",
     "title": "/tree/master/Platform",
-    "count": 34,
-    "uniques": 18
+    "count": 41,
+    "uniques": 20
   },
   {
-    "path": "/slimbootloader/slimbootloader/pull/2906",
-    "title": "/pull/2906",
-    "count": 31,
-    "uniques": 10
-  },
-  {
-    "path": "/slimbootloader/slimbootloader/pull/2879",
-    "title": "/pull/2879",
-    "count": 26,
-    "uniques": 7
+    "path": "/slimbootloader/slimbootloader/pull/2901",
+    "title": "/pull/2901",
+    "count": 40,
+    "uniques": 6
   },
   {
     "path": "/slimbootloader/slimbootloader/tree/master/Silicon",
     "title": "/tree/master/Silicon",
+    "count": 26,
+    "uniques": 13
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2906",
+    "title": "/pull/2906",
     "count": 25,
-    "uniques": 12
+    "uniques": 8
+  },
+  {
+    "path": "/slimbootloader/slimbootloader/pull/2911",
+    "title": "/pull/2911",
+    "count": 25,
+    "uniques": 7
   }
 ]
