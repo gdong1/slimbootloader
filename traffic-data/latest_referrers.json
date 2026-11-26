@@ -1,18 +1,13 @@
 [
   {
     "referrer": "github.com",
-    "count": 135,
-    "uniques": 63
+    "count": 131,
+    "uniques": 60
   },
   {
     "referrer": "Google",
-    "count": 43,
-    "uniques": 32
-  },
-  {
-    "referrer": "groups.io",
-    "count": 21,
-    "uniques": 5
+    "count": 41,
+    "uniques": 31
   },
   {
     "referrer": "intel.com",
@@ -20,14 +15,19 @@
     "uniques": 14
   },
   {
+    "referrer": "groups.io",
+    "count": 18,
+    "uniques": 4
+  },
+  {
     "referrer": "slimbootloader.github.io",
-    "count": 12,
+    "count": 13,
     "uniques": 8
   },
   {
     "referrer": "Bing",
-    "count": 11,
-    "uniques": 8
+    "count": 9,
+    "uniques": 7
   },
   {
     "referrer": "yandex.ru",
@@ -35,18 +35,18 @@
     "uniques": 3
   },
   {
-    "referrer": "teams.public.onecdn.static.microsoft",
-    "count": 3,
-    "uniques": 1
-  },
-  {
     "referrer": "learn.zoho.in",
     "count": 2,
     "uniques": 2
   },
   {
-    "referrer": "qnx.com",
-    "count": 2,
-    "uniques": 2
+    "referrer": "DuckDuckGo",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "referrer": "blog.csdn.net",
+    "count": 1,
+    "uniques": 1
   }
 ]
